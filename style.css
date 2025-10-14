@@ -239,8 +239,6 @@ label {
   
 }
 
-
-
 .project {
   position: sticky;
   top: 0;
@@ -266,7 +264,25 @@ label {
 
 #third-project {
   background-image: url("./images/mockup 1.png");
-  z-index: 2;
+  z-index: 3;
+}
+
+#test-project {
+  z-index: 4;
+}
+
+
+.image-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-image {
+  background-image: url("./images/mockup 1.png");
+}
+
+.right-image {
+  background-image: url("./images/mockup 1.png");
 }
 
 /*homepage end*/
