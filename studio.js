@@ -90,115 +90,85 @@ document.addEventListener("scroll", function () {
 const section2 = document.querySelector(".section2");
 const container = document.querySelector(".section2 .container");
 
-if (!section2 || !container) {
-  console.warn("Missing .section2 or .section2 .container");
+let virtualScroll = 0;
+const maxVirtualScroll = 100;
+let lastTouchY = 0;
+
+const touchSpeed = 0.25; // tune: bigger = faster on mobile
+
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
 }
 
-// 0 = collapsed, 1 = expanded
-let progress = 0;
-
-// Tune feel: bigger = faster per wheel tick
-const speed = 0.002;
-
-function clamp01(n) {
-  return Math.max(0, Math.min(1, n));
+function isSection2Pinned() {
+  const rect = section2.getBoundingClientRect();
+  const pinnedAtTop = Math.abs(rect.top) < 2;                 // forgiving for iOS
+  const fillsViewport = rect.bottom >= window.innerHeight - 2; // sticky is active
+  return pinnedAtTop && fillsViewport;
 }
 
-function lerp(a, b, t) {
-  return a + (b - a) * t;
+function updateAnimation() {
+  const progress = virtualScroll / maxVirtualScroll;
+
+  const width = 90 + (progress * 10);
+  const height = 50 + (progress * 50);
+  const borderRadius = 300 - (progress * 300);
+
+  container.style.width = `${width}%`;
+  container.style.height = `${height}%`;
+  container.style.borderRadius = `${borderRadius}px`;
 }
 
-function applyContainerStyles(t) {
-  const widthPct = lerp(90, 100, t);   // 90% -> 100%
-  const heightPct = lerp(50, 100, t);  // 50% -> 100%
-  const radiusPx = lerp(300, 0, t);    // 300px -> 0
+// initial
+updateAnimation();
 
-  container.style.width = `${widthPct}%`;
-  container.style.height = `${heightPct}%`;
-  container.style.borderRadius = `${radiusPx}px`;
-}
-
-// set initial look
-applyContainerStyles(progress);
-
-document.addEventListener(
-  "wheel",
+// IMPORTANT: touchstart should be passive:false if you want maximum control on iOS
+section2.addEventListener(
+  "touchstart",
   (e) => {
-    if (!section2 || !container) return;
-
-    const rect = section2.getBoundingClientRect();
-
-    // Only hijack when section2 is truly "pinned" (stuck at top)
-    const pinnedAtTop = Math.abs(rect.top) < 2;
-    const fillsViewport = rect.bottom >= window.innerHeight;
-    const section2Pinned = pinnedAtTop && fillsViewport;
-
-    const scrollingDown = e.deltaY > 0;
-    const scrollingUp = e.deltaY < 0;
-
-    const shouldLockScroll =
-      section2Pinned &&
-      ((scrollingDown && progress < 1) || (scrollingUp && progress > 0));
-
-    if (!shouldLockScroll) return;
-
-    e.preventDefault();
-
-    progress = clamp01(progress + e.deltaY * speed);
-    applyContainerStyles(progress);
+    lastTouchY = e.touches[0].clientY;
   },
   { passive: false }
 );
 
-// ===== MOBILE - touch events =====
-document.addEventListener("touchstart", function(e) {
-    lastTouchY = e.touches[0].clientY;
-}, { passive: true });
-
-document.addEventListener("touchmove", function(e) {
-    const rect = section2.getBoundingClientRect();
+section2.addEventListener(
+  "touchmove",
+  (e) => {
     const currentTouchY = e.touches[0].clientY;
-    const deltaY = lastTouchY - currentTouchY; // Positive = swiping up (scrolling down)
-    
-    if (rect.top <= 0 && virtualScroll < maxVirtualScroll) {
-        e.preventDefault();
-        
-        if (deltaY > 0) { 
-            virtualScroll += 1;
-        } else if (virtualScroll > 0) { 
-            virtualScroll -= 1;
-        }
-        
-        virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll));
-        updateAnimation();
+    const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
+
+    // iOS sometimes sends non-cancelable events once scrolling begins
+    if (!e.cancelable) {
+      lastTouchY = currentTouchY;
+      return;
     }
-    else if (rect.top <= 0 && virtualScroll === 0 && deltaY < 0) {
-        virtualScroll = 0;
+
+    const pinned = isSection2Pinned();
+
+    const swipingUp = deltaY > 0;
+    const swipingDown = deltaY < 0;
+
+    const shouldLock =
+      pinned &&
+      ((swipingUp && virtualScroll < maxVirtualScroll) ||
+        (swipingDown && virtualScroll > 0));
+
+    if (!shouldLock) {
+      lastTouchY = currentTouchY;
+      return;
     }
-    else if (rect.top > 0) {
-        virtualScroll = 0;
-        updateAnimation();
-    }
-    
+
+    e.preventDefault(); // pause page scroll
+
+    // scale by deltaY, not +1
+    virtualScroll = clamp(
+      virtualScroll + deltaY * touchSpeed,
+      0,
+      maxVirtualScroll
+    );
+
+    updateAnimation();
     lastTouchY = currentTouchY;
-}, { passive: false });
-
-
-
-
-function updateAnimation() {
-    const progress = virtualScroll / maxVirtualScroll;
-    
-    const width = 90 + (progress * 10);
-    const height = 50 + (progress * 50);
-    const borderRadius = 300 - (progress * 300);
-    
-    imgTag.style.width = `${width}%`;
-    imgTag.style.height = `${height}%`;
-    imgTag.style.borderRadius = `${borderRadius}px`;
-    
-    console.log("progress: " + (progress * 100).toFixed(2) + "%");
-}
-
-
-
+  },
+  { passive: false }
+);
