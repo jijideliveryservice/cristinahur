@@ -388,11 +388,11 @@ section {
     transform: translate(-50%, -50%);
 
     /* Tall vertical pill */
-    width: 88%;
-    height: 88%;
+    width: 50%;
+    height: 90%;
 
     /* Big oval ends (this is the key) */
-    border-radius: 9999px;
+    border-radius: 300px;
   }
 
   .content {
