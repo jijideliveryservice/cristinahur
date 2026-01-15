@@ -132,10 +132,22 @@ function viewportHeight() {
 function isSection2Active() {
   const rect = section2.getBoundingClientRect();
   const vh = viewportHeight();
-  const mid = vh / 2;
 
-  return rect.top < mid && rect.bottom > mid;
+  const mobile = isMobile();
+
+  if (mobile) {
+    // Mobile: forgiving
+    const mid = vh / 2;
+    return rect.top < mid && rect.bottom > mid;
+  }
+
+  // Desktop: strict (prevents early start)
+  const pinnedAtTop = rect.top <= 1 && rect.top >= -1;
+  const fillsViewport = rect.bottom >= vh - 1;
+
+  return pinnedAtTop && fillsViewport;
 }
+
 
 function applyContainerStyles(t) {
   const mobile = isMobile();
