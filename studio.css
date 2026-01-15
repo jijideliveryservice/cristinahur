@@ -373,9 +373,16 @@ section {
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
     padding-left: 32px;
     padding-right: 32px;
-    max-width: 580px;
+    max-width: 640px;
     z-index: 1;
     color: white;
 }
@@ -395,9 +402,6 @@ section {
     border-radius: 300px;
   }
 
-  .content {
-    max-width: 400px;
-  }
 
   .resume {    
     padding: 40px 24px 40px 24px;
