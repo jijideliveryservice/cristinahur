@@ -214,6 +214,8 @@ a.open-menu, .menuPanel, .close-button {
     
     padding: 32px;
     box-sizing: border-box;
+    
+    transition: right .3s ease;
   }
 
  .menuPanel.open {
