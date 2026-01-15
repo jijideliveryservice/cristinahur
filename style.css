@@ -257,7 +257,7 @@ a.open-menu, .menuPanel, .close-button {
  .menuPanel button {
     padding: 40px 24px 40px 24px;
     width: 100%;
-    margin: 0;
+    margin: 0 32px;
     border: none;
  }
 
