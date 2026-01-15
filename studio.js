@@ -183,6 +183,9 @@ document.addEventListener("touchmove", function(e) {
     lastTouchY = currentTouchY;
 }, { passive: false });
 
+
+
+
 function updateAnimation() {
     const progress = virtualScroll / maxVirtualScroll;
     

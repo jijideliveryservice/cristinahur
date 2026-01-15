@@ -263,6 +263,7 @@ a.open-menu, .menuPanel, .close-button {
 
  .menuPanel button {
     padding: 40px 96px;
+    margin: 0;
     border: none;
  }
 
@@ -314,7 +315,7 @@ section {
 
 .profilepic {
     width: 6%;
-    left: 20%;
+    left: 30%;
     position: absolute; 
     transition: top .5s ease;
 }
