@@ -86,4 +86,121 @@ document.addEventListener("scroll", function () {
 
 //resume request section 
 
-const section2 = document.querySelector(".section2"); const container = document.querySelector(".section2 .container"); if (!section2 || !container) { console.warn("Missing .section2 or .section2 .container"); } // 0 = collapsed, 1 = expanded let progress = 0; // Tune feel: bigger = faster per wheel tick const speed = 0.002; function clamp01(n) { return Math.max(0, Math.min(1, n)); } function lerp(a, b, t) { return a + (b - a) * t; } function applyContainerStyles(t) { const widthPct = lerp(90, 100, t); // 90% -> 100% const heightPct = lerp(50, 100, t); // 50% -> 100% const radiusPx = lerp(300, 0, t); // 300px -> 0 container.style.width = ${widthPct}%; container.style.height = ${heightPct}%; container.style.borderRadius = ${radiusPx}px; } // set initial look applyContainerStyles(progress); document.addEventListener( "wheel", (e) => { if (!section2 || !container) return; const rect = section2.getBoundingClientRect(); // Only hijack when section2 is truly "pinned" (stuck at top) const pinnedAtTop = Math.abs(rect.top) < 2; const fillsViewport = rect.bottom >= window.innerHeight; const section2Pinned = pinnedAtTop && fillsViewport; const scrollingDown = e.deltaY > 0; const scrollingUp = e.deltaY < 0; const shouldLockScroll = section2Pinned && ((scrollingDown && progress < 1) || (scrollingUp && progress > 0)); if (!shouldLockScroll) return; e.preventDefault(); progress = clamp01(progress + e.deltaY * speed); applyContainerStyles(progress); }, { passive: false } ); // ===== MOBILE - touch events ===== document.addEventListener("touchstart", function(e) { lastTouchY = e.touches[0].clientY; }, { passive: true }); document.addEventListener("touchmove", function(e) { const rect = section2.getBoundingClientRect(); const currentTouchY = e.touches[0].clientY; const deltaY = lastTouchY - currentTouchY; // Positive = swiping up (scrolling down) if (rect.top <= 0 && virtualScroll < maxVirtualScroll) { e.preventDefault(); if (deltaY > 0) { virtualScroll += 1; } else if (virtualScroll > 0) { virtualScroll -= 1; } virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll)); updateAnimation(); } else if (rect.top <= 0 && virtualScroll === 0 && deltaY < 0) { virtualScroll = 0; } else if (rect.top > 0) { virtualScroll = 0; updateAnimation(); } lastTouchY = currentTouchY; }, { passive: false }); function updateAnimation() { const progress = virtualScroll / maxVirtualScroll; const width = 90 + (progress * 10); const height = 50 + (progress * 50); const borderRadius = 300 - (progress * 300); imgTag.style.width = ${width}%; imgTag.style.height = ${height}%; imgTag.style.borderRadius = ${borderRadius}px; console.log("progress: " + (progress * 100).toFixed(2) + "%"); }
+
+const section2 = document.querySelector(".section2");
+const container = document.querySelector(".section2 .container");
+
+if (!section2 || !container) {
+  console.warn("Missing .section2 or .section2 .container");
+}
+
+// 0 = collapsed, 1 = expanded
+let progress = 0;
+
+// Tune feel: bigger = faster per wheel tick
+const speed = 0.002;
+
+function clamp01(n) {
+  return Math.max(0, Math.min(1, n));
+}
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function applyContainerStyles(t) {
+  const widthPct = lerp(90, 100, t);   // 90% -> 100%
+  const heightPct = lerp(50, 100, t);  // 50% -> 100%
+  const radiusPx = lerp(300, 0, t);    // 300px -> 0
+
+  container.style.width = `${widthPct}%`;
+  container.style.height = `${heightPct}%`;
+  container.style.borderRadius = `${radiusPx}px`;
+}
+
+// set initial look
+applyContainerStyles(progress);
+
+document.addEventListener(
+  "wheel",
+  (e) => {
+    if (!section2 || !container) return;
+
+    const rect = section2.getBoundingClientRect();
+
+    // Only hijack when section2 is truly "pinned" (stuck at top)
+    const pinnedAtTop = Math.abs(rect.top) < 2;
+    const fillsViewport = rect.bottom >= window.innerHeight;
+    const section2Pinned = pinnedAtTop && fillsViewport;
+
+    const scrollingDown = e.deltaY > 0;
+    const scrollingUp = e.deltaY < 0;
+
+    const shouldLockScroll =
+      section2Pinned &&
+      ((scrollingDown && progress < 1) || (scrollingUp && progress > 0));
+
+    if (!shouldLockScroll) return;
+
+    e.preventDefault();
+
+    progress = clamp01(progress + e.deltaY * speed);
+    applyContainerStyles(progress);
+  },
+  { passive: false }
+);
+
+// ===== MOBILE - touch events =====
+document.addEventListener("touchstart", function(e) {
+    lastTouchY = e.touches[0].clientY;
+  }, { 
+    passive: true 
+  });
+
+document.addEventListener("touchmove", function(e) {
+    const rect = section2.getBoundingClientRect();
+    const currentTouchY = e.touches[0].clientY;
+    const deltaY = lastTouchY - currentTouchY; // Positive = swiping up (scrolling down)
+    
+    if (rect.top <= 0 && virtualScroll < maxVirtualScroll) {
+        e.preventDefault();
+        
+        if (deltaY > 0) { 
+            virtualScroll += 1;
+        } else if (virtualScroll > 0) { 
+            virtualScroll -= 1;
+        }
+        
+        virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll));
+        updateAnimation();
+    }
+    else if (rect.top <= 0 && virtualScroll === 0 && deltaY < 0) {
+        virtualScroll = 0;
+    }
+    else if (rect.top > 0) {
+        virtualScroll = 0;
+        updateAnimation();
+    }
+    
+    lastTouchY = currentTouchY;
+}, { passive: false });
+
+
+
+
+function updateAnimation() {
+    const progress = virtualScroll / maxVirtualScroll;
+    
+    const width = 90 + (progress * 10);
+    const height = 50 + (progress * 50);
+    const borderRadius = 300 - (progress * 300);
+    
+    imgTag.style.width = `${width}%`;
+    imgTag.style.height = `${height}%`;
+    imgTag.style.borderRadius = `${borderRadius}px`;
+    
+    console.log("progress: " + (progress * 100).toFixed(2) + "%");
+}
+
+
+

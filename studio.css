@@ -344,7 +344,6 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 @supports (height: 100svh) {
@@ -352,6 +351,7 @@ section {
     height: 100svh;
   }
 }
+
 
 .section2 .container {
     display: flex;
@@ -381,6 +381,20 @@ section {
 }
 
 @media (max-width: 768px) {
+   .section2 .container {
+    /* Center it perfectly */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Tall vertical pill */
+    width: 88%;
+    height: 88%;
+
+    /* Big oval ends (this is the key) */
+    border-radius: 9999px;
+  }
+
   .content {
     max-width: 400px;
   }
