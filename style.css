@@ -380,7 +380,7 @@ section {
 }
 
 .firstProject {
-  background-image: url("assets/bi_phone_mockup.png");
+  background-image: url("assets/bi_phone_mockup1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -403,12 +403,12 @@ section {
 
 
 .secondProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
+  background-image: url("assets/bi_phone_mockup1.jpg");
 
 }
 
 .secondProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
+  background-image: url("assets/bi_phone_mockup1.jpg");
 
 }
 
@@ -427,12 +427,12 @@ section {
 }
 
 .thirdProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
+  background-image: url("assets/bi_phone_mockup1.jpg");
 
 }
 
 .thirdProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
+  background-image: url("assets/bi_phone_mockup1.jpg");
 
 }
 
