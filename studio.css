@@ -346,7 +346,11 @@ section {
     text-align: center;
 }
 
-
+@media (max-width: 768px) {
+  .section2 {
+    touch-action: none;
+  }
+}
 
 @supports (height: 100svh) {
   .section2 { height: 100svh; }
