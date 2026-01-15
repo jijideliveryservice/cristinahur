@@ -320,7 +320,7 @@ section {
 
 .profilepic {
     width: 6%;
-    left: 30%;
+    left: 25%;
     position: absolute; 
     transition: top .5s ease;
 }
