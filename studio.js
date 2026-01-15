@@ -87,7 +87,10 @@ document.addEventListener("scroll", function () {
 //resume request section 
 
 
-// ===== resume request section (wheel + touch, unified) =====
+// =============================
+// RESUME REQUEST SECTION (iPhone-safe)
+// Scroll-jack using active-zone (viewport middle inside section2)
+// =============================
 
 const section2 = document.querySelector(".section2");
 const container = document.querySelector(".section2 .container");
@@ -96,7 +99,7 @@ if (!section2 || !container) {
   console.warn("Missing .section2 or .section2 .container");
 }
 
-// 0 = collapsed, 1 = expanded
+// progress: 0 = collapsed, 1 = expanded
 let progress = 0;
 
 // tune
@@ -121,15 +124,17 @@ function viewportHeight() {
   return window.visualViewport?.height ?? window.innerHeight;
 }
 
-function isSection2Pinned() {
+/**
+ * iOS-safe: section2 is "active" when the middle of the viewport
+ * is inside the section.
+ * This avoids relying on sticky reporting rect.top ~ 0 (often buggy on iOS).
+ */
+function isSection2Active() {
   const rect = section2.getBoundingClientRect();
   const vh = viewportHeight();
+  const mid = vh / 2;
 
-  // sticky truly active: basically at top + still filling viewport
-  const pinnedAtTop = Math.abs(rect.top) < 2;
-  const fillsViewport = rect.bottom >= vh - 2;
-
-  return pinnedAtTop && fillsViewport;
+  return rect.top < mid && rect.bottom > mid;
 }
 
 function applyContainerStyles(t) {
@@ -153,7 +158,7 @@ function applyContainerStyles(t) {
 // initial
 applyContainerStyles(progress);
 
-// re-apply on rotation / bars resize (iOS)
+// update on resize/orientation + iOS URL bar changes
 window.addEventListener("resize", () => applyContainerStyles(progress));
 window.visualViewport?.addEventListener("resize", () => applyContainerStyles(progress));
 
@@ -161,22 +166,27 @@ window.visualViewport?.addEventListener("resize", () => applyContainerStyles(pro
 document.addEventListener(
   "wheel",
   (e) => {
-    if (!isSection2Pinned()) return;
+    if (!section2 || !container) return;
+
+    // only hijack while section2 is the active view
+    if (!isSection2Active()) return;
 
     const down = e.deltaY > 0;
     const up = e.deltaY < 0;
 
+    // only lock scroll while progress can change
     const shouldLock = (down && progress < 1) || (up && progress > 0);
     if (!shouldLock) return;
 
     e.preventDefault();
+
     progress = clamp01(progress + e.deltaY * wheelSpeed);
     applyContainerStyles(progress);
   },
   { passive: false }
 );
 
-// ===== MOBILE: touch (attach to document so you don’t have to touch “exactly” the image) =====
+// ===== MOBILE: touch =====
 document.addEventListener(
   "touchstart",
   (e) => {
@@ -188,10 +198,12 @@ document.addEventListener(
 document.addEventListener(
   "touchmove",
   (e) => {
-    // iOS: if it’s not cancelable, preventDefault won’t work
+    if (!section2 || !container) return;
+
+    // iOS: preventDefault only works if cancelable
     if (!e.cancelable) return;
 
-    if (!isSection2Pinned()) {
+    if (!isSection2Active()) {
       lastTouchY = e.touches[0].clientY;
       return;
     }
