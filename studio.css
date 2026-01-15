@@ -409,6 +409,22 @@ section {
     margin: 0 32px;
   }
 
+  .profilepic {
+    width: 20%;
+    left: -4%;
+    position: absolute; 
+    transition: top .5s ease;
+}
+
+.industry {
+    width: 20%;
+    right: 8%;
+    top: 76%;
+    position: absolute;
+    z-index: 2;
+}
+
+
 }
 
 .resume {
