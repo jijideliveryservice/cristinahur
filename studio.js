@@ -141,8 +141,8 @@ function applyContainerStyles(t) {
   const mobile = isMobile();
 
   // collapsed (start)
-  const startW = mobile ? 50 : 90;
-  const startH = mobile ? 90 : 50;
+  const startW = mobile ? 70 : 90;
+  const startH = mobile ? 90 : 70;
   const startR = mobile ? 9999 : 300;
 
   // expanded (end)
