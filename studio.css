@@ -90,8 +90,12 @@ body {
     min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
 
-
+body.locked {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 main {

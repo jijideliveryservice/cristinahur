@@ -87,88 +87,103 @@ document.addEventListener("scroll", function () {
 //resume request section 
 
 
+const imgTag = document.querySelector(".section2 .container");
 const section2 = document.querySelector(".section2");
-const container = document.querySelector(".section2 .container");
+const body = document.body;
 
-let virtualScroll = 0;
+let virtualScroll = 0; 
 const maxVirtualScroll = 100;
 let lastTouchY = 0;
+let isLocked = false;
 
-const touchSpeed = 0.25; // tune: bigger = faster on mobile
+// Desktop - wheel event
+document.addEventListener("wheel", function (e) {
+    const rect = section2.getBoundingClientRect();
+    
+    if (rect.top <= 0 && virtualScroll < maxVirtualScroll) {
+        e.preventDefault();
+        
+        if (e.deltaY > 0) { 
+            virtualScroll += 1;
+        } else if (virtualScroll > 0) { 
+            virtualScroll -= 1;
+        }
+        
+        virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll));
+        updateAnimation();
+    }
+    else if (rect.top <= 0 && virtualScroll === 0 && e.deltaY < 0) {
+        virtualScroll = 0;
+    }
+    else if (rect.top > 0) {
+        virtualScroll = 0;
+        updateAnimation();
+    }
+}, { passive: false });
 
-function clamp(n, min, max) {
-  return Math.max(min, Math.min(max, n));
-}
+// Mobile - touch events
+document.addEventListener("touchstart", function(e) {
+    const rect = section2.getBoundingClientRect();
+    
+    // Lock body if we're at section2
+    if (rect.top <= 0 && rect.bottom > 0) {
+        isLocked = true;
+        body.classList.add('locked');
+    }
+    
+    lastTouchY = e.touches[0].clientY;
+});
 
-function isSection2Pinned() {
-  const rect = section2.getBoundingClientRect();
-  const pinnedAtTop = Math.abs(rect.top) < 2;                 // forgiving for iOS
-  const fillsViewport = rect.bottom >= window.innerHeight - 2; // sticky is active
-  return pinnedAtTop && fillsViewport;
-}
+document.addEventListener("touchmove", function(e) {
+    const rect = section2.getBoundingClientRect();
+    const currentTouchY = e.touches[0].clientY;
+    const deltaY = lastTouchY - currentTouchY;
+    
+    if (isLocked && virtualScroll < maxVirtualScroll) {
+        // Animate based on touch movement
+        if (deltaY > 5) { // Swipe up threshold
+            virtualScroll += 2;
+        } else if (deltaY < -5 && virtualScroll > 0) { // Swipe down threshold
+            virtualScroll -= 2;
+        }
+        
+        virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll));
+        updateAnimation();
+        
+        // Unlock when animation complete
+        if (virtualScroll >= maxVirtualScroll) {
+            isLocked = false;
+            body.classList.remove('locked');
+        }
+    }
+    
+    // Unlock when scrolling away
+    if (virtualScroll === 0 && deltaY < 0) {
+        isLocked = false;
+        body.classList.remove('locked');
+    }
+    
+    lastTouchY = currentTouchY;
+});
+
+document.addEventListener("touchend", function() {
+    // Clean up if needed
+    if (virtualScroll === 0 || virtualScroll >= maxVirtualScroll) {
+        isLocked = false;
+        body.classList.remove('locked');
+    }
+});
 
 function updateAnimation() {
-  const progress = virtualScroll / maxVirtualScroll;
-
-  const width = 90 + (progress * 10);
-  const height = 50 + (progress * 50);
-  const borderRadius = 300 - (progress * 300);
-
-  container.style.width = `${width}%`;
-  container.style.height = `${height}%`;
-  container.style.borderRadius = `${borderRadius}px`;
+    const progress = virtualScroll / maxVirtualScroll;
+    
+    const width = 90 + (progress * 10);
+    const height = 50 + (progress * 50);
+    const borderRadius = 300 - (progress * 300);
+    
+    imgTag.style.width = `${width}%`;
+    imgTag.style.height = `${height}%`;
+    imgTag.style.borderRadius = `${borderRadius}px`;
+    
+    console.log("Mobile progress: " + (progress * 100).toFixed(2) + "%");
 }
-
-// initial
-updateAnimation();
-
-// IMPORTANT: touchstart should be passive:false if you want maximum control on iOS
-section2.addEventListener(
-  "touchstart",
-  (e) => {
-    lastTouchY = e.touches[0].clientY;
-  },
-  { passive: false }
-);
-
-section2.addEventListener(
-  "touchmove",
-  (e) => {
-    const currentTouchY = e.touches[0].clientY;
-    const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
-
-    // iOS sometimes sends non-cancelable events once scrolling begins
-    if (!e.cancelable) {
-      lastTouchY = currentTouchY;
-      return;
-    }
-
-    const pinned = isSection2Pinned();
-
-    const swipingUp = deltaY > 0;
-    const swipingDown = deltaY < 0;
-
-    const shouldLock =
-      pinned &&
-      ((swipingUp && virtualScroll < maxVirtualScroll) ||
-        (swipingDown && virtualScroll > 0));
-
-    if (!shouldLock) {
-      lastTouchY = currentTouchY;
-      return;
-    }
-
-    e.preventDefault(); // pause page scroll
-
-    // scale by deltaY, not +1
-    virtualScroll = clamp(
-      virtualScroll + deltaY * touchSpeed,
-      0,
-      maxVirtualScroll
-    );
-
-    updateAnimation();
-    lastTouchY = currentTouchY;
-  },
-  { passive: false }
-);
