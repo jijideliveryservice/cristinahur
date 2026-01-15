@@ -399,13 +399,16 @@ section {
     max-width: 400px;
   }
 
+  .resume {    
+    margin: 0 32px;
+  }
+
 }
 
-button {
+.resume {
     font: var(--header-a);
     color: var(--dark-gray);
-    padding: 40px 40px;
-    margin: auto 100px;
+    padding: 40px 64px 40px 64px;
     border: none;
 }
 
