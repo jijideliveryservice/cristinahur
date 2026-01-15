@@ -87,6 +87,8 @@ document.addEventListener("scroll", function () {
 //resume request section 
 
 
+// ===== resume request section (wheel + touch, unified) =====
+
 const section2 = document.querySelector(".section2");
 const container = document.querySelector(".section2 .container");
 
@@ -97,8 +99,11 @@ if (!section2 || !container) {
 // 0 = collapsed, 1 = expanded
 let progress = 0;
 
-// Tune feel: bigger = faster per wheel tick
-const speed = 0.002;
+// tune
+const wheelSpeed = 0.002;
+const touchSpeed = 0.004;
+
+let lastTouchY = 0;
 
 function clamp01(n) {
   return Math.max(0, Math.min(1, n));
@@ -108,99 +113,107 @@ function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
-function applyContainerStyles(t) {
-  const widthPct = lerp(90, 100, t);   // 90% -> 100%
-  const heightPct = lerp(50, 100, t);  // 50% -> 100%
-  const radiusPx = lerp(300, 0, t);    // 300px -> 0
-
-  container.style.width = `${widthPct}%`;
-  container.style.height = `${heightPct}%`;
-  container.style.borderRadius = `${radiusPx}px`;
+function isMobile() {
+  return window.matchMedia("(max-width: 768px)").matches;
 }
 
-// set initial look
+function viewportHeight() {
+  return window.visualViewport?.height ?? window.innerHeight;
+}
+
+function isSection2Pinned() {
+  const rect = section2.getBoundingClientRect();
+  const vh = viewportHeight();
+
+  // sticky truly active: basically at top + still filling viewport
+  const pinnedAtTop = Math.abs(rect.top) < 2;
+  const fillsViewport = rect.bottom >= vh - 2;
+
+  return pinnedAtTop && fillsViewport;
+}
+
+function applyContainerStyles(t) {
+  const mobile = isMobile();
+
+  // collapsed (start)
+  const startW = mobile ? 50 : 90;
+  const startH = mobile ? 90 : 50;
+  const startR = mobile ? 9999 : 300;
+
+  // expanded (end)
+  const endW = 100;
+  const endH = 100;
+  const endR = 0;
+
+  container.style.width = `${lerp(startW, endW, t)}%`;
+  container.style.height = `${lerp(startH, endH, t)}%`;
+  container.style.borderRadius = `${lerp(startR, endR, t)}px`;
+}
+
+// initial
 applyContainerStyles(progress);
 
+// re-apply on rotation / bars resize (iOS)
+window.addEventListener("resize", () => applyContainerStyles(progress));
+window.visualViewport?.addEventListener("resize", () => applyContainerStyles(progress));
+
+// ===== DESKTOP: wheel =====
 document.addEventListener(
   "wheel",
   (e) => {
-    if (!section2 || !container) return;
+    if (!isSection2Pinned()) return;
 
-    const rect = section2.getBoundingClientRect();
+    const down = e.deltaY > 0;
+    const up = e.deltaY < 0;
 
-    // Only hijack when section2 is truly "pinned" (stuck at top)
-    const pinnedAtTop = Math.abs(rect.top) < 2;
-    const fillsViewport = rect.bottom >= window.innerHeight;
-    const section2Pinned = pinnedAtTop && fillsViewport;
-
-    const scrollingDown = e.deltaY > 0;
-    const scrollingUp = e.deltaY < 0;
-
-    const shouldLockScroll =
-      section2Pinned &&
-      ((scrollingDown && progress < 1) || (scrollingUp && progress > 0));
-
-    if (!shouldLockScroll) return;
+    const shouldLock = (down && progress < 1) || (up && progress > 0);
+    if (!shouldLock) return;
 
     e.preventDefault();
-
-    progress = clamp01(progress + e.deltaY * speed);
+    progress = clamp01(progress + e.deltaY * wheelSpeed);
     applyContainerStyles(progress);
   },
   { passive: false }
 );
 
-// ===== MOBILE - touch events =====
-document.addEventListener("touchstart", function(e) {
+// ===== MOBILE: touch (attach to document so you don’t have to touch “exactly” the image) =====
+document.addEventListener(
+  "touchstart",
+  (e) => {
     lastTouchY = e.touches[0].clientY;
-  }, { 
-    passive: true 
-  });
+  },
+  { passive: false }
+);
 
-document.addEventListener("touchmove", function(e) {
-    const rect = section2.getBoundingClientRect();
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    // iOS: if it’s not cancelable, preventDefault won’t work
+    if (!e.cancelable) return;
+
+    if (!isSection2Pinned()) {
+      lastTouchY = e.touches[0].clientY;
+      return;
+    }
+
     const currentTouchY = e.touches[0].clientY;
-    const deltaY = lastTouchY - currentTouchY; // Positive = swiping up (scrolling down)
-    
-    if (rect.top <= 0 && virtualScroll < maxVirtualScroll) {
-        e.preventDefault();
-        
-        if (deltaY > 0) { 
-            virtualScroll += 1;
-        } else if (virtualScroll > 0) { 
-            virtualScroll -= 1;
-        }
-        
-        virtualScroll = Math.max(0, Math.min(maxVirtualScroll, virtualScroll));
-        updateAnimation();
+    const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
+
+    const up = deltaY > 0;
+    const down = deltaY < 0;
+
+    const shouldLock = (up && progress < 1) || (down && progress > 0);
+    if (!shouldLock) {
+      lastTouchY = currentTouchY;
+      return;
     }
-    else if (rect.top <= 0 && virtualScroll === 0 && deltaY < 0) {
-        virtualScroll = 0;
-    }
-    else if (rect.top > 0) {
-        virtualScroll = 0;
-        updateAnimation();
-    }
-    
+
+    e.preventDefault();
+
+    progress = clamp01(progress + deltaY * touchSpeed);
+    applyContainerStyles(progress);
+
     lastTouchY = currentTouchY;
-}, { passive: false });
-
-
-
-
-function updateAnimation() {
-    const progress = virtualScroll / maxVirtualScroll;
-    
-    const width = 90 + (progress * 10);
-    const height = 50 + (progress * 50);
-    const borderRadius = 300 - (progress * 300);
-    
-    imgTag.style.width = `${width}%`;
-    imgTag.style.height = `${height}%`;
-    imgTag.style.borderRadius = `${borderRadius}px`;
-    
-    console.log("progress: " + (progress * 100).toFixed(2) + "%");
-}
-
-
-
+  },
+  { passive: false }
+);

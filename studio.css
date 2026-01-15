@@ -346,11 +346,16 @@ section {
     text-align: center;
 }
 
+
+
 @supports (height: 100svh) {
-  .section2 {
-    height: 100svh;
-  }
+  .section2 { height: 100svh; }
 }
+
+@supports (height: 100dvh) {
+  .section2 { height: 100dvh; }
+}
+
 
 
 .section2 .container {
