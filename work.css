@@ -173,8 +173,7 @@ header nav a.active {
 
 
 
-
-/*mobile menu start*/
+/*mobile menu*/
 a.open-menu, .menuPanel, .close-button {
   display: none; /*hide mobile stuff on desktop*/
 }
@@ -191,7 +190,6 @@ a.open-menu, .menuPanel, .close-button {
 }
 
   /* turn on menu */
-  
   a.open-menu {
     display: block;
     font: var(--header-a);
@@ -216,12 +214,13 @@ a.open-menu, .menuPanel, .close-button {
     
     padding: 32px;
     box-sizing: border-box;
-
-
-    transition: right .3s ease;
   }
 
-  .menuPanel a  {
+ .menuPanel.open {
+    right: 0;
+ }
+
+ .menuPanel a  {
     font-family: var(--font-secondary);
     font-size: var(--font-size-s);
     gap: 32px;
@@ -230,10 +229,6 @@ a.open-menu, .menuPanel, .close-button {
     text-align: center;
     text-decoration: none;
   }
-
- .menuPanel.open {
-    right: 0;
- }
 
  .close-button {
     display: inline-block;
@@ -265,175 +260,88 @@ a.open-menu, .menuPanel, .close-button {
  }
 
 }
-/*mobile menu ends*/
+/*mobile menu end*/
 
 
 
-section {
-  width: 100%;
-  box-sizing: border-box;
-  
 
+
+/*work page start*/
+.work-gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 32px;
+
+    width:100%;
+    overflow-x: hidden;
+    padding: 80px 32px 180px 32px;
+    box-sizing: border-box;
 }
 
-
-.intro {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 80px 32px 32px 32px;
-
-  min-height: 300px;
+.work-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.intro h3 {
-  align-self: flex-end;
-  margin: 0;
-  max-width: 600px;
+.frame {
+    overflow: hidden;
+    position: relative;
+    display: block;
 }
 
-.intro p {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-xs);
-  align-self: flex-end;
-  margin: 0;
+.frame img {
+    width: 100%;
+    height: 100%;
+    
+    display: block;
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform .8s ease, filter 0.3s ease;
 }
 
-
-
-
-
-
-
-
-
-/*project preview*/
-.project {
-  width: 100%;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  box-sizing: border-box;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  transition: all 0.3s ease-out;
-  
+.frame:hover img {
+  filter: brightness(0.7);
+  transform: scale(1.1);
 }
 
-
-
-.projectInfo{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 32px;
-  box-sizing: border-box;
-  position: relative; /* Keeps it above background */
-  z-index: 3;
+.title {
+    color: var(--dark-gray);
 }
 
-
-
-.projectInfo p {
-  font-family: var(--font-secondary);
-  font-weight: var(--thin-weight);
-  font-size: var(--font-size-s);
-  color: white;
-  flex: 1;
+.title p {
+    font-family: var(--font-secondary);
+    font-weight: var(--thin-weight);
+    font-style: normal;
+    margin: 8px auto;
+    line-height: 1.3;
 }
 
-.type {
-  text-align: left;
+.title p.brand{
+    font-size: 18px;
 }
 
-.company {
-  text-align: center;
-}
-
-.year {
-  text-align: right;
-}
-
-.doubleImg {
-  position: absolute; /* Position it as background */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  z-index: 1; /* Behind the projectInfo */
-}
-
-.leftImage,
-.rightImage {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.firstProject {
-  background-image: url("assets/bi_phone_mockup.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.secondProject {
-  z-index: 2;
-}
-
-
-.secondProject .doubleImg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
-  align-items: stretch;
+.title p.work{
+    font-size: var(--font-size-xs);
 }
 
 
 
-.secondProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
-
+@media (max-width: 1024px) {
+    .work-gallery {
+        flex-wrap: wrap;
+    }
+    .work-card {
+        flex: 0 0 calc(50% - 16px); 
+    }
 }
 
-.secondProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
-
-}
 
 
-.thirdProject {
-  z-index: 3;
-}
-
-.thirdProject .doubleImg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
-  align-items: stretch;
-}
-
-.thirdProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
-
-}
-
-.thirdProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
-
-}
-
+/*work page end*/
 
 /*footer*/
 .footer {
@@ -458,6 +366,7 @@ section {
 }
 
 
+
 .footer2 {
   text-align: right;
   color: white;
@@ -466,10 +375,10 @@ section {
 }
 
 .copyright {
-  font-family: var(--font-secondary);
-  font-size: 12px;
-  color: white;
-  font-weight: var(--thin-weight);
+    font-family: var(--font-secondary);
+    font-size: 12px;
+    color: white;
+    font-weight: var(--thin-weight);
 }
 
 @media (max-width: 768px) {

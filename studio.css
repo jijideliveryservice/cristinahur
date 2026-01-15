@@ -10,6 +10,7 @@
     --font-size-logo: 20px;
     --font-size-m: 24px;
     --font-size-l: 32px;
+    --font-size-xl: 40px;
 
     --thin-weight: 100;
     --extralight-weight: 200;
@@ -25,6 +26,7 @@
 
     --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
     --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
+    --h1: normal normal var(--thin-weight) var(--font-size-xl)/1.5 var(--font-secondary);
     --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
     --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
     --p: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-primary);
@@ -32,13 +34,16 @@
 
 
 /*font start*/
+h1 {
+    font: var(--h1)
+}
+
 h2 {
     font: var(--h2);
 }
 
 h3 {
     font: var(--h3);
-    color: var(--dark-gray);
 }
 
 .logo {
@@ -70,7 +75,8 @@ nav a {
 /*body start*/
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+
 }
 
 
@@ -85,7 +91,6 @@ body {
   display: flex;
   flex-direction: column;
 
-  scroll-snap-type: y proximity; /* Subtle snapping */
 
 }
 
@@ -93,6 +98,9 @@ main {
     flex: 1;
     min-height: calc(100vh - 100px); 
     position: relative; 
+
+       
+  
 }
 /*body end*/
 
@@ -170,7 +178,6 @@ header nav a.active {
     color: var(--light-gray);
 }
 /*header end*/
-
 
 
 
@@ -271,174 +278,154 @@ a.open-menu, .menuPanel, .close-button {
 
 section {
   width: 100%;
-  box-sizing: border-box;
+}
   
 
+.section1 {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: calc(100vh - 80px);
+    box-sizing: border-box;
+    text-align: center;
 }
+    
 
-
-.intro {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 80px 32px 32px 32px;
-
-  min-height: 300px;
-}
-
-.intro h3 {
-  align-self: flex-end;
-  margin: 0;
-  max-width: 600px;
-}
-
-.intro p {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-xs);
-  align-self: flex-end;
-  margin: 0;
-}
-
-
-
-
-
-
-
-
-
-/*project preview*/
-.project {
-  width: 100%;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  box-sizing: border-box;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  transition: all 0.3s ease-out;
-  
-}
-
-
-
-.projectInfo{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 32px;
-  box-sizing: border-box;
-  position: relative; /* Keeps it above background */
-  z-index: 3;
-}
-
-
-
-.projectInfo p {
-  font-family: var(--font-secondary);
-  font-weight: var(--thin-weight);
-  font-size: var(--font-size-s);
-  color: white;
-  flex: 1;
-}
-
-.type {
-  text-align: left;
-}
-
-.company {
-  text-align: center;
-}
-
-.year {
-  text-align: right;
-}
-
-.doubleImg {
-  position: absolute; /* Position it as background */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  z-index: 1; /* Behind the projectInfo */
-}
-
-.leftImage,
-.rightImage {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.firstProject {
-  background-image: url("assets/bi_phone_mockup.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.secondProject {
-  z-index: 2;
-}
-
-
-.secondProject .doubleImg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
-  align-items: stretch;
-}
-
-
-
-.secondProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
+.shortblurb {
+    max-width: 800px;
+    z-index: 1;
+    padding-left: 32px;
+    padding-right: 32px;
+    position: relative;
 
 }
 
-.secondProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
+.studio {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 12px;
+    object-fit: cover;
+    height: 60px;
+    width: auto;
+}
+
+.profilepic {
+    width: 6%;
+    left: 20%;
+    position: absolute; 
+    transition: top .5s ease;
+}
+
+.industry {
+    width: 6%;
+    right: 30%;
+    top: 60%;
+    position: absolute;
+    z-index: 2;
+}
+
+
+.section2 {
+    position: sticky; 
+    top: 0;  
+    background-color: var(--dark-green);
+    height: 100vh;
+
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
 }
 
 
-.thirdProject {
-  z-index: 3;
+.section2 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    position: absolute;
+    overflow: hidden;
+
+    background-position: center;
+    width: 90%;
+    height: 50%;
+    border-radius: 300px;
+    background-image: url("./assets/intro-background.png");
+    /* do not delete: background-attachment: fixed; fixed background parallax*/
+
+    will-change: width, height, border-radius;
 }
 
-.thirdProject .doubleImg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
-  align-items: stretch;
+.content {
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 580px;
+    z-index: 1;
+    color: white;
 }
 
-.thirdProject .leftImage {
-  background-image: url("assets/bi_phone_mockup.png");
+@media (max-width: 768px) {
+  .content {
+    max-width: 400px;
+  }
 
 }
 
-.thirdProject .rightImage {
-  background-image: url("assets/bi_phone_mockup.png");
+button {
+    font: var(--header-a);
+    color: var(--dark-gray);
+    padding: 40px 40px;
+    margin: auto 100px;
+    border: none;
+}
+
+.introImg {
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 90%;
+    height: 50%;
+    border-radius: 300px;
+    overflow: hidden; /* Keeps overlay inside rounded corners */
+}
+
+
+
+.imgfilter {
+    position: absolute;
+    width: 100%;
+    /*border-radius: 300px;*/
+    overflow: hidden; /* Keeps overlay inside rounded corners */
+}
+
+.imgfilter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(72, 76, 65, 0.3); 
+}
+
+.section4 {
+  background-color: var(--dark-green);
+  height: 70vh;
 
 }
 
 
 /*footer*/
 .footer {
-  width: 100%;
-  background-color: var(--dark-gray);
+    width: 100%;
+    right: 0;
+    background-color: var(--dark-gray);
 
 }
 
@@ -449,6 +436,7 @@ section {
   flex-wrap: wrap;
   background-color: white;
   padding: 32px;
+
 }
 
 .footer1 nav {
