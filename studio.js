@@ -232,3 +232,10 @@ document.addEventListener(
   },
   { passive: false }
 );
+
+
+
+
+window.addEventListener("load", () => {
+  document.querySelector(".grid-wrap")?.classList.add("is-visible");
+});
