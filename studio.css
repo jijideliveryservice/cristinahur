@@ -72,6 +72,7 @@
 /*font end*/
 
 
+
 /*body start*/
   html {
     scroll-behavior: smooth;
@@ -392,6 +393,7 @@
   .section4 {
     background-color: var(--dark-green);
     height: 70vh;
+    z-index: 0;
   }
 
 /*section ends*/
