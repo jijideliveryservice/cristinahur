@@ -503,7 +503,7 @@
   }
   /*mobile menu ends*/
 
-  /*mobile sections start*/
+  /*sections start - mobile*/
     @media (max-width: 768px) {
       .section2 {
         touch-action: pan-y;
