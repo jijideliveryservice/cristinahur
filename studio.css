@@ -193,9 +193,9 @@
     pointer-events: none;
     z-index: -10;
     top: 0;
-    left: 16px;
+    left: 0;
     bottom: 0;
-    right: 16px;
+    right: 0;
   }
 
   .grid-wrap.is-visible .grid div {
