@@ -192,10 +192,7 @@
     position: fixed;
     pointer-events: none;
     z-index: -10;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
   }
 
   .grid-wrap.is-visible .grid div {
@@ -212,7 +209,9 @@
     position: absolute;
     inset: 0;
     background-image: 
-      repeating-linear-gradient(to right, transparent 0, transparent calc(2% - 1px), var(--ultra-light-gray) calc(2% - 1px), var(--ultra-light-gray) 2%);
+      repeating-linear-gradient(to right, var(--ultra-light-gray) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 4s cubic-bezier(0.1, 0, 0.115, 0.995);
@@ -227,11 +226,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(24px - 1px), var(--ultra-light-gray) calc(24px - 1px), var(--ultra-light-gray) 24px);
+    background-image: repeating-linear-gradient(to bottom, var(--ultra-light-gray) 1px, transparent 1px);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 4s cubic-bezier(0.3, 0, 0.115, 0.995);
   }
+
   .grid-wrap.is-visible::after {
     transform: scaleX(1);
   }
