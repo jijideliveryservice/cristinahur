@@ -84,12 +84,17 @@ document.addEventListener("scroll", function () {
 })
 
 
+window.addEventListener("load", () => {
+  document.querySelector(".grid-wrap")?.classList.add("is-visible");
+});
+
+
+
 //resume request section 
 
 
 // =============================
-// RESUME REQUEST SECTION (iPhone-safe)
-// Scroll-jack using active-zone (viewport middle inside section2)
+// RESUME REQUEST SECTION (smooth mobile release)
 // =============================
 
 const section2 = document.querySelector(".section2");
@@ -99,12 +104,11 @@ if (!section2 || !container) {
   console.warn("Missing .section2 or .section2 .container");
 }
 
-// progress: 0 = collapsed, 1 = expanded
 let progress = 0;
 
-// tune
+// tuning
 const wheelSpeed = 0.002;
-const touchSpeed = 0.004;
+const touchSpeed = 0.006; // a bit more responsive on mobile
 
 let lastTouchY = 0;
 
@@ -124,37 +128,28 @@ function viewportHeight() {
   return window.visualViewport?.height ?? window.innerHeight;
 }
 
-/**
- * iOS-safe: section2 is "active" when the middle of the viewport
- * is inside the section.
- * This avoids relying on sticky reporting rect.top ~ 0 (often buggy on iOS).
- */
+// Mobile-friendly: section is active when viewport middle is inside it
+// Desktop: use a stricter pinned check so it doesn't start early
 function isSection2Active() {
   const rect = section2.getBoundingClientRect();
   const vh = viewportHeight();
 
-  const mobile = isMobile();
-
-  if (mobile) {
-    // Mobile: forgiving
+  if (isMobile()) {
     const mid = vh / 2;
     return rect.top < mid && rect.bottom > mid;
   }
 
-  // Desktop: strict (prevents early start)
-  const pinnedAtTop = rect.top <= 1 && rect.top >= -1;
-  const fillsViewport = rect.bottom >= vh - 1;
-
+  const pinnedAtTop = Math.abs(rect.top) < 2;
+  const fillsViewport = rect.bottom >= vh - 2;
   return pinnedAtTop && fillsViewport;
 }
-
 
 function applyContainerStyles(t) {
   const mobile = isMobile();
 
   // collapsed (start)
-  const startW = mobile ? 70 : 90;
-  const startH = mobile ? 90 : 70;
+  const startW = mobile ? 50 : 90;
+  const startH = mobile ? 90 : 50;
   const startR = mobile ? 9999 : 300;
 
   // expanded (end)
@@ -167,10 +162,8 @@ function applyContainerStyles(t) {
   container.style.borderRadius = `${lerp(startR, endR, t)}px`;
 }
 
-// initial
+// initial + keep correct on rotation / URL bar changes
 applyContainerStyles(progress);
-
-// update on resize/orientation + iOS URL bar changes
 window.addEventListener("resize", () => applyContainerStyles(progress));
 window.visualViewport?.addEventListener("resize", () => applyContainerStyles(progress));
 
@@ -179,19 +172,16 @@ document.addEventListener(
   "wheel",
   (e) => {
     if (!section2 || !container) return;
-
-    // only hijack while section2 is the active view
     if (!isSection2Active()) return;
 
     const down = e.deltaY > 0;
     const up = e.deltaY < 0;
 
-    // only lock scroll while progress can change
+    // Only lock while progress can actually change
     const shouldLock = (down && progress < 1) || (up && progress > 0);
     if (!shouldLock) return;
 
     e.preventDefault();
-
     progress = clamp01(progress + e.deltaY * wheelSpeed);
     applyContainerStyles(progress);
   },
@@ -212,32 +202,33 @@ document.addEventListener(
   (e) => {
     if (!section2 || !container) return;
 
-    // iOS: preventDefault only works if cancelable
-    if (!e.cancelable) return;
-
-    if (!isSection2Active()) {
-      lastTouchY = e.touches[0].clientY;
-      return;
-    }
-
     const currentTouchY = e.touches[0].clientY;
     const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
 
-    const up = deltaY > 0;
-    const down = deltaY < 0;
+    // Always update lastTouchY so you never get "stuck deltas"
+    lastTouchY = currentTouchY;
 
-    const shouldLock = (up && progress < 1) || (down && progress > 0);
-    if (!shouldLock) {
-      lastTouchY = currentTouchY;
-      return;
-    }
+    // If iOS says it's not cancelable, we cannot prevent scroll anyway
+    if (!e.cancelable) return;
 
+    // Only consider hijacking while section is active
+    if (!isSection2Active()) return;
+
+    const swipingUp = deltaY > 0;   // user wants to scroll down the page
+    const swipingDown = deltaY < 0; // user wants to scroll up the page
+
+    // ✅ CRITICAL: Release scroll at the ends
+    // - If fully expanded and user keeps swiping up (to go DOWN page), let them scroll
+    if (progress >= 1 && swipingUp) return;
+
+    // - If fully collapsed and user swiping down (to go UP page), let them scroll
+    if (progress <= 0 && swipingDown) return;
+
+    // Otherwise, we are mid-animation (or reversing), so hijack
     e.preventDefault();
 
     progress = clamp01(progress + deltaY * touchSpeed);
     applyContainerStyles(progress);
-
-    lastTouchY = currentTouchY;
   },
   { passive: false }
 );
