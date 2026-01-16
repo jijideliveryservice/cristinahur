@@ -1,8 +1,4 @@
-
-
-
 //side menu
-
 const openMenuTag = document.querySelector(".open-menu")
 const closeMenuTag = document.querySelector(".close-button")
 const menuPanelTag = document.querySelector(".menuPanel")
@@ -58,33 +54,35 @@ document.querySelectorAll("header nav a").forEach(link => {
     }
 });
 
+//section 1 grid
+window.addEventListener("load", () => {
+  document.querySelector(".grid-wrap")?.classList.add("is-visible");
+});
+
 
 //about frame parallax
-const sectionTag = document.querySelector(".section1")
-const sectionImgTag = document.querySelectorAll(".section1 img")
+  const sectionTag = document.querySelector(".section1")
+  const sectionImgTag = document.querySelectorAll(".section1 img")
 
-document.addEventListener("scroll", function () {
+  document.addEventListener("scroll", function () {
 
-    const topView = window.pageYOffset 
-    const sizeOfCurrentView = window.innerHeight
-    const middleOfYourView = topView + (sizeOfCurrentView / 2)    
+      const topView = window.pageYOffset 
+      const sizeOfCurrentView = window.innerHeight
+      const middleOfYourView = topView + (sizeOfCurrentView / 2)    
 
-    sectionImgTag.forEach (img => {
+      sectionImgTag.forEach (img => {
+          if (img.hasAttribute('data-parallax')) {
+              const topOfElement = img.offsetTop
+              const midSectionElement = topOfElement + (img.getBoundingClientRect().height/2)
+              
+              //calc dis from your mid eye view from mid of the images
+              const distanceBetween = middleOfYourView - midSectionElement
 
-        if (img.hasAttribute('data-parallax')) {
-            const topOfElement = img.offsetTop
-            const midSectionElement = topOfElement + (img.getBoundingClientRect().height/2)
-            
-            //calc dis from your mid eye view from mid of the images
-            const distanceBetween = middleOfYourView - midSectionElement
-
-            const speed = parseFloat(img.getAttribute("data-parallax"))
-            img.style.transform = `translateY(${distanceBetween * speed}px)`;
-
-        }
-    }) 
-})
-
+              const speed = parseFloat(img.getAttribute("data-parallax"))
+              img.style.transform = `translateY(${distanceBetween * speed}px)`;
+          }
+      }) 
+  })
 
 window.addEventListener("load", () => {
   document.querySelector(".grid-wrap")?.classList.add("is-visible");
@@ -93,12 +91,6 @@ window.addEventListener("load", () => {
 
 
 //resume request section 
-
-
-// =============================
-// RESUME REQUEST SECTION (smooth mobile release)
-// =============================
-
 const section2 = document.querySelector(".section2");
 const container = document.querySelector(".section2 .container");
 
@@ -132,6 +124,7 @@ function viewportHeight() {
 
 // Mobile-friendly: section is active when viewport middle is inside it
 // Desktop: use a stricter pinned check so it doesn't start early
+
 function isSection2Active() {
   const rect = section2.getBoundingClientRect();
   const vh = viewportHeight();
@@ -170,54 +163,55 @@ window.addEventListener("resize", () => applyContainerStyles(progress));
 window.visualViewport?.addEventListener("resize", () => applyContainerStyles(progress));
 
 // ===== DESKTOP: wheel =====
-document.addEventListener(
-  "wheel",
-  (e) => {
+document.addEventListener("wheel", (e) => {
     if (!section2 || !container) return;
     if (!isSection2Active()) return;
+      const down = e.deltaY > 0;
+      const up = e.deltaY < 0;
 
-    const down = e.deltaY > 0;
-    const up = e.deltaY < 0;
-
-    // Only lock while progress can actually change
-    const shouldLock = (down && progress < 1) || (up && progress > 0);
+      // Only lock while progress can actually change
+      const shouldLock = (down && progress < 1) || (up && progress > 0);
+    
     if (!shouldLock) return;
 
-    e.preventDefault();
-    progress = clamp01(progress + e.deltaY * wheelSpeed);
-    applyContainerStyles(progress);
+      e.preventDefault();
+      progress = clamp01(progress + e.deltaY * wheelSpeed);
+      applyContainerStyles(progress);
   },
-  { passive: false }
+
+  { 
+    passive: false 
+  }
+
 );
 
 // ===== MOBILE: touch =====
-document.addEventListener(
-  "touchstart",
-  (e) => {
+document.addEventListener("touchstart", (e) => {
     lastTouchY = e.touches[0].clientY;
   },
-  { passive: false }
+  { 
+    passive: false 
+  }
 );
 
-document.addEventListener(
-  "touchmove",
-  (e) => {
+document.addEventListener("touchmove", (e) => {
     if (!section2 || !container) return;
 
-    const currentTouchY = e.touches[0].clientY;
-    const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
+      const currentTouchY = e.touches[0].clientY;
+      const deltaY = lastTouchY - currentTouchY; // + = swipe up (scroll down)
 
-    // Always update lastTouchY so you never get "stuck deltas"
-    lastTouchY = currentTouchY;
+      // Always update lastTouchY so you never get "stuck deltas"
+      lastTouchY = currentTouchY;
 
     // If iOS says it's not cancelable, we cannot prevent scroll anyway
     if (!e.cancelable) return;
+    
 
     // Only consider hijacking while section is active
     if (!isSection2Active()) return;
 
-    const swipingUp = deltaY > 0;   // user wants to scroll down the page
-    const swipingDown = deltaY < 0; // user wants to scroll up the page
+      const swipingUp = deltaY > 0;   // user wants to scroll down the page
+      const swipingDown = deltaY < 0; // user wants to scroll up the page
 
     // ✅ CRITICAL: Release scroll at the ends
     // - If fully expanded and user keeps swiping up (to go DOWN page), let them scroll
@@ -232,12 +226,11 @@ document.addEventListener(
     progress = clamp01(progress + deltaY * touchSpeed);
     applyContainerStyles(progress);
   },
-  { passive: false }
+  
+  { 
+    passive: false 
+  }
 );
 
 
 
-
-window.addEventListener("load", () => {
-  document.querySelector(".grid-wrap")?.classList.add("is-visible");
-});
