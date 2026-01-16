@@ -32,10 +32,9 @@
   --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
   --p: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-primary);
 
-  --grid-step: 24px; /* change to taste */
-
-
+  --grid-step: 24px;
 }
+
 
 
 /*font start*/
@@ -88,6 +87,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
   }
 
   body.locked {
