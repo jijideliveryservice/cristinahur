@@ -20,7 +20,7 @@
   --semibold-weight: 600;
   --bold-weight: 700;
 
-  --dark-green: #484C41;
+  --dark-green: #505244;
   --dark-gray: #2C2A26;
   --light-gray: #858585;
   --ultra-light-gray: #f8f6f6;
@@ -197,7 +197,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url("./assets/DTS_Daniel-Faro_On-The_Job_61.jpg");
+    background-image: url("./assets/brand moodcard.png");
 }
 
 .contact-info {
