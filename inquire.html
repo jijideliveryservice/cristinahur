@@ -47,12 +47,57 @@
 
 <!--main start--> 
 <main>
-    <section class="contact-container">
+    <section class="container">
         <div class="brand-imagery"></div>
-        <div class="contact-info">
-            <h3>Contact</h3>
-            <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below or 
-                schedule a discovery call here.</p>
+        <div class="content">
+
+            <div class="contact-container">
+                
+                <div class="contact-info">
+
+                    <div class="info">
+                        <h4>Contact</h4>
+                        <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below or 
+                            schedule a discovery call here.</p>
+                    </div>
+
+                    <div class="operations">
+                        <p>hi.cristinahur@gmail.com</p>
+                        <p>Studio Hours: Monday-Friday 9am to 5pm PST</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="field-container">
+                        <div class="field">
+                            <label for="fullName">Full Name <span aria-hidden="true">*</span></label>
+                            <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email <span aria-hidden="true">*</span></label>
+                            <input id="email" name="email" type="email" autocomplete="email" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="business">Business Name</label>
+                            <input id="business" name="business" type="text" autocomplete="organization" />
+                        </div>
+
+                        <div class="field">
+                            <label for="website">Website or Social Link</label>
+                            <input id="website" name="website" type="url" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="nextBtn" type="submit">Next</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 </main>

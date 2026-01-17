@@ -30,7 +30,8 @@
   --h1: normal normal var(--thin-weight) var(--font-size-xl)/1.5 var(--font-secondary);
   --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
   --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
-  --p: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-primary);
+  --h4: normal normal var(--thin-weight) var(--font-size-s)/1.5 var(--font-secondary);
+  --p: normal normal var(--light-weight) var(--font-size-xs)/1.5 var(--font-secondary);
 
   --grid-step: 24px;
 }
@@ -38,36 +39,41 @@
 
 
 /*font start*/
-  h1 {
-      font: var(--h1)
+    h1 {
+        font: var(--h1)
+    }
+
+    h2 {
+        font: var(--h2);
+    }
+
+    h3 {
+        font: var(--h3);
+    }
+
+    h4 {
+      font: var(--h4);
+      margin: 0;
   }
 
-  h2 {
-      font: var(--h2);
-  }
+    .logo {
+        font: var(--header-logo);
+        text-decoration: none;
+        color: var(--dark-gray);
+    }
 
-  h3 {
-      font: var(--h3);
-  }
+    p {
+        font: var(--p);
+        color: var(--dark-gray);
+    }
 
-  .logo {
-      font: var(--header-logo);
-      text-decoration: none;
-      color: var(--dark-gray);
-  }
-
-  p {
-      font: var(--p);
-      color: var(--dark-gray);
-  }
-
-  nav a {
-    font: var(--header-a);
-    color: var(--dark-gray);
-    text-decoration: none;
-    padding: 8px 0px 8px 0px;
-    border-bottom: 1px solid transparent;  
-  }
+    nav a {
+        font: var(--header-a);
+        color: var(--dark-gray);
+        text-decoration: none;
+        padding: 8px 0px 8px 0px;
+        border-bottom: 1px solid transparent;  
+    }
 /*font end*/
 
 
@@ -180,30 +186,102 @@
   }
 /*header end*/
 
+    section.container {
+        display: grid;
+        justify-content: center;
+        width: 100%;
+        height: calc(100vh - 80px);
+        grid-template-columns: 1fr 1fr;
+        box-sizing: border-box;
+        align-items: stretch;
+    }
 
-.contact-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 32px;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+    .brand-imagery {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("./assets/brand moodcard.png");
+    }
 
-.brand-imagery {
-    width: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: url("./assets/brand moodcard.png");
-}
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px;
+        margin: 32px;
+        gap: 24px;
+    }
 
-.contact-info {
-    max-width: 400px;
-    align-items: left;
-}
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 480px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .contact-info h4, .contact-info p {
+        margin: 0;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+   /*form starts*/
+    .contact-form-container {
+        max-width: 400px; 
+    }
+
+    .field-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .field label {
+        font: var(--p);
+        margin-bottom: 16px;
+    }
+
+    .field input {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        border-bottom: .5px solid var(--dark-gray);
+        padding: 0 0 8px;
+        font-size: 20px;
+        color: var(--dark-gray);
+        outline: none;
+    }
+
+    .nextBtn {
+        padding: 40px 0 40px 0;
+        width: 50%;    
+        margin: 24px auto;
+        border: none;
+    }
+
+    .nextBtn a {
+        font: var(--header-a);
+        color: var(--dark-gray);
+    }
+
+    /*form ends*/
 
 /*footer*/
   .footer {
