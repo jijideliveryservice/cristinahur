@@ -10,22 +10,24 @@
 </head>
 
 <body>
-    <!--mobile menu panel start --> 
-    <nav class="menuPanel">
-        <img src="./assets/close.svg" class="close-button">
-            
-        <div class="menuPanel-items">
-            <a href="./index.html">Home</a>
-            <a href="./work.html">Work</a>
-            <a href="./studio.html">Studio</a>
-            <a href="./inquire.html">Inquire</a>
-            <button class="secondaryButton"><a href="https://calendly.com/hi-cristinahur/30min">Book A Discovery Call</a></button>
-        </div>
-    </nav>
-    <!--mobile menu panel start --> 
 
-    <!--global navigation start--> 
+    <!--mobile menu panel --> 
+
+    <nav class="menuPanel">
+           <img src="./assets/close.svg" class="close-button">
+           
+           <div class="menuPanel-items">
+                <a href="./index.html">Home</a>
+                <a href="./work.html">Work</a>
+                <a href="./studio.html">Studio</a>
+                <a href="./inquire.html">Inquire</a>
+                <button class="secondaryButton"><a href="https://calendly.com/hi-cristinahur/30min" target="_blank" rel="noopener noreferrer">Book A Discovery Call</a></button>
+             </div>
+        </nav>
+
+    <!--global navigation--> 
     <header>
+        
         <nav class="leftLinks">
             <a href="./work.html">Work</a>
             <a href="./studio.html">Studio</a>
@@ -37,69 +39,212 @@
         <nav class="rightLinks">
             <a href="https://calendly.com/hi-cristinahur/30min" target="_blank" rel="noopener noreferrer">Book A Discovery Call</a>
         </nav>
+
+
     <!--global navigation end--> 
 
-    <!--mobile menu start--> 
+    <!--mobile menu--> 
+
         <a href="#" class="open-menu">Menu</a>
-    <!--mobile menu end-->
+    
+
     </header>
+    
 
 
 <!--main start--> 
 <main>
     <section class="container">
+        <!--image--> 
         <div class="brand-imagery"></div>
+         <!--right area--> 
         <div class="content">
+            <!--body--> 
+            <div class="contact-info">
+                <div class="info">
+                    <h4>Contact</h4>
+                    <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below or 
+                        schedule a discovery call <a href="https://calendly.com/hi-cristinahur/30min" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                </div>
+                <div class="operations">
+                    <p>hi.cristinahur@gmail.com</p>
+                    <p>Studio Hours: Monday-Friday 9am to 5pm PST</p>
+                </div>
+            </div>
 
-            <div class="contact-container">
-                
-                <div class="contact-info">
-
-                    <div class="info">
-                        <h4>Contact</h4>
-                        <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below or 
-                            schedule a discovery call <a href="#">here</a>.</p>
+            <!--form area--> 
+            <form class="contact-form" action="#" method="post" novalidate>
+                <!--step 1--> 
+                <div class="field-container is-active" data-step="1">
+                    <div class="text-field">
+                        <label for="fullName">Full Name <span aria-hidden="true">*</span></label>
+                        <input id="fullName" name="fullName" type="text" autocomplete="name" required />
                     </div>
 
-                    <div class="operations">
-                        <p>hi.cristinahur@gmail.com</p>
-                        <p>Studio Hours: Monday-Friday 9am to 5pm PST</p>
+                    <div class="text-field">
+                        <label for="email">Email <span aria-hidden="true">*</span></label>
+                        <input id="email" name="email" type="email" autocomplete="email" required />
+                    </div>
+
+                    <div class="text-field">
+                        <label for="business">Business Name</label>
+                        <input id="business" name="business" type="text" autocomplete="organization" />
+                    </div>
+
+                    <div class="text-field">
+                        <label for="website">Website or Social Link</label>
+                        <input id="website" name="website" type="url" placeholder="" />
+                    </div>
+
+                    <div class="buttons">
+                        <button class="nextBtn" type="button" data-next>Next</button>
                     </div>
                 </div>
 
-            </div>
 
-            <div class="contact-form-container">
-                <form class="contact-form">
-                    <div class="field-container">
-                        <div class="field">
-                            <label for="fullName">Full Name <span aria-hidden="true">*</span></label>
-                            <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+
+
+
+                <!--step 2--> 
+                <div class="field-container" data-step="2">
+                    <!--question 1--> 
+                    <div class="question-container">
+                        <p class="question">Service Required <span>*</span></p>
+                        <!--choices--> 
+                        <div class="options">
+                            <div class="column3">
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="logo design">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Logo Design</span>
+                                </label>
+
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="Brand Strategy">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Brand Strategy</span>
+                                </label>
+
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="Packaging Design">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Packaging Design</span>
+                                </label>
+                            </div>
+
+                             <div class="column3">
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="Website Design">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Website Design</span>
+                                </label>
+
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="Retainer Services">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Retainer Services</span>
+                                </label>
+
+                                <label class="check-option">
+                                    <input type="checkbox" name="service" value="Other/Unsure">
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">Other/Unsure</span>
+                                </label>
+                            </div>
+
                         </div>
+                    </div>
+                    
+                    <!--question 2--> 
+                    <div class="question-container">
+                        <p class="question">What is your budget for this project?<span>*</span></p>
 
-                        <div class="field">
-                            <label for="email">Email <span aria-hidden="true">*</span></label>
-                            <input id="email" name="email" type="email" autocomplete="email" required />
-                        </div>
+                        <div class="options">
+                            <div class="column3">
+                                <label class="answer">
+                                    <input type="checkbox" name="budget" value="$2,000-$4,500" required>
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">$2,000 - $4,500</span>
+                                </label>
 
-                        <div class="field">
-                            <label for="business">Business Name</label>
-                            <input id="business" name="business" type="text" autocomplete="organization" />
-                        </div>
+                                <label class="answer">
+                                    <input type="checkbox" name="budget" value="$4,500-$6,000" required>
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">$4,500-$6,000</span>
+                                </label>
 
-                        <div class="field">
-                            <label for="website">Website or Social Link</label>
-                            <input id="website" name="website" type="url" placeholder="" />
+                                <label class="answer">
+                                    <input type="checkbox" name="budget" value="$6,000-$9,000" required>
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">$6,000-$9,000</span>
+                                </label>
+                            </div>
+
+                            <div class="column3">
+                                <label class="answer">
+                                    <input type="checkbox" name="budget" value="$9,000 - $12,000" required>
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">$9,000 - $12,000</span>
+                                </label>
+
+                                <label class="answer">
+                                    <input type="checkbox" name="budget" value="$15,000+" required>
+                                    <span class="box" aria-hidden="true"></span>
+                                    <span class="text">$15,000+</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="actions">
-                        <button class="nextBtn" type="submit">Next</button>
+
+                    <!--question 3--> 
+                    <div class="question-container">
+                        <p class="question">Ideal Launch Date <span>*</span></p>
+
+                        <div class="pickDate">
+                            <div class="calendar">
+                                <label>Month</label>
+                                <select name="month" required>
+                                    <option value="" selected disabled></option>
+                                    <option>January</option>
+                                    <option>February</option>
+                                    <option>March</option>
+                                    <option>April</option>
+                                    <option>May</option>
+                                    <option>June</option>
+                                    <option>July</option>
+                                    <option>August</option>
+                                    <option>September</option>
+                                    <option>October</option>
+                                    <option>November</option>
+                                    <option>December</option>
+                                </select>
+                            </div>
+
+                            <div class="text-field">
+                                <label>Day</label>
+                                <input name="day" inputmode="numeric" pattern="[0-9]*" required>
+                            </div>
+
+                             <div class="text-field">
+                                <label>Year</label>
+                                <input name="year" inputmode="numeric" pattern="[0-9]*" required>
+                            </div>
+
+                        </div>
                     </div>
-                </form>
-            </div>
+
+                    <!--button--> 
+                    <div class="buttons actionsBetween">
+                        <button type="button" class="btnGhost" data-back>Back</button>
+                        <button type="button" class="nextBtn" data-next>Next</button>
+                    </div> 
+                </div>
+            </form>
+          
         </div>
     </section>
+
 </main>
 <!--main end--> 
 
@@ -131,6 +276,11 @@
         </div>
     <!--footer end-->
 
-    <script src="./studio.js"></script>
+    <script src="./inquire.js"></script>
 </body>
 </html>
+
+
+
+
+ 

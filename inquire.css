@@ -67,6 +67,11 @@
         color: var(--dark-gray);
     }
 
+    a {
+      font: var(--p);
+      color: var(--dark-gray);
+    }
+
     nav a {
         font: var(--header-a);
         color: var(--dark-gray);
@@ -105,6 +110,7 @@
   main {
     flex: 1;
     min-height: calc(100vh - 100px); 
+    overflow: hidden;
     position: relative;   
   }
 /*body end*/
@@ -186,18 +192,6 @@
   }
 /*header end*/
 
-    section.container {
-        display: grid;
-        justify-content: center;
-        width: 100%;
-        height: calc(100vh - 80px);
-        grid-template-columns: 1fr 1fr;
-        box-sizing: border-box;
-        align-items: stretch;
-        border-top: 1px solid var(--light-gray);
-        border-bottom: 1px solid var(--light-gray);
-    }
-
     .brand-imagery {
         width: 100%;
         background-repeat: no-repeat;
@@ -206,26 +200,58 @@
         background-image: url("./assets/brand moodcard.png");
     }
 
+    /*right side*/
+    section.container {
+        display: grid;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        box-sizing: border-box;
+        align-items: stretch;
+        border-top: 1px solid var(--light-gray);
+        border-bottom: 1px solid var(--light-gray);
+    }
+
     .content {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding: 56px;
+        margin: 40px;
         gap: 24px;
+        min-width: 0;
     }
 
-    .contact-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        max-width: 480px;
+    /*buttons*/
+
+    button {
+      font: var(--header-a);
+      color: var(--dark-gray);
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .nextBtn {
+      padding: 24px 0 24px 0;
+      width: 30%;  
+      border: none;  
+    }
+
+    .btnGhost {
+      padding: 24px 0 24px 0;
+      border: 1px solid var(--dark-gray);
+      background-color: transparent;
     }
 
     .contact-info {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        align-items: start;
+        gap: 16px;
     }
 
     .contact-info h4, .contact-info p {
@@ -239,56 +265,75 @@
     }
 
    /*form starts*/
-    .contact-form-container {
-        max-width: 400px; 
-    }
-
     .contact-form {
       display: flex;
       flex-direction: column;
-
     }
 
     .field-container {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
     }
     
-    .field {
-        display: flex;
-        flex-direction: column;
+    .text-field {
+      display: flex;
+      flex-direction: column;
+      border-bottom: .5px solid var(--dark-gray);
+      min-width: 0;
     }
     
-    .field label {
-        font: var(--p);
-        margin-bottom: 8px;
+   label {
+      font: var(--p);
     }
 
-    .field input {
-        width: 100%;
-        background: transparent;
-        border: 0;
-        border-bottom: .5px solid var(--dark-gray);
-        padding: 0 0 8px;
-        font-size: 20px;
-        color: var(--dark-gray);
-        outline: none;
+    input {
+      background: transparent;
+      border: 0;
+      padding: 0 0 8px;
+      font: var(--p);
+      color: var(--dark-gray);
+      outline: none;
     }
 
-    .nextBtn {
-        padding: 32px 0 32px 0;
-        margin: 24px auto;
-        width: 50%;    
-        border: none;
+
+    /* step 2*/
+    .options {
+      display: flex;
+      flex-direction: row;
     }
 
-    .nextBtn a {
-        font: var(--header-a);
-        color: var(--dark-gray);
+    .column3 {
+      display: flex;
+      flex-direction: column;
     }
 
-    /*form ends*/
+    .pickDate {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  
+    
+    .calendar select{
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: .5px solid var(--dark-gray);
+      padding: 0 0 8px;
+      font-size: 20px;
+      color: var(--dark-gray);
+      outline: none;
+    }
+   
+    
+
+
+
+
+
+
 
 /*footer*/
   .footer {
@@ -415,3 +460,7 @@
       }
   }
   /*mobile menu ends*/
+
+  @media (max-width: 768px){
+  .calendar{ grid-template-columns: 1fr; }
+}
