@@ -162,19 +162,19 @@
                         <div class="options">
                             <div class="column3">
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$2,000-$4,500" required>
+                                    <input type="checkbox" name="budget" value="$2,000-$4,500">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$2,000 - $4,500</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$4,500-$6,000" required>
+                                    <input type="checkbox" name="budget" value="$4,500-$6,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$4,500-$6,000</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$6,000-$9,000" required>
+                                    <input type="checkbox" name="budget" value="$6,000-$9,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$6,000-$9,000</span>
                                 </label>
@@ -182,13 +182,13 @@
 
                             <div class="column3">
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$9,000 - $12,000" required>
+                                    <input type="checkbox" name="budget" value="$9,000 - $12,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$9,000 - $12,000</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$15,000+" required>
+                                    <input type="checkbox" name="budget" value="$15,000+">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$15,000+</span>
                                 </label>
@@ -238,6 +238,36 @@
                     <div class="buttons actionsBetween">
                         <button type="button" class="btnGhost" data-back>Back</button>
                         <button type="button" class="nextBtn" data-next>Next</button>
+                    </div> 
+                </div>
+
+
+
+                <!--step 3--> 
+                <div class="field-container" data-step="3">
+                    <!--question 1--> 
+                    <div class="question-container">
+                        <p class="question">Tell us more about your project <span>*</span></p>
+
+                        <div class="text-field">
+                            <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+                        </div>
+                    </div>
+
+                    <div class="calendar">
+                        <p class="question">How Did You Hear About Us?</p>
+
+                        <select name="socials" required>
+                            <option value="" selected disabled></option>
+                            <option>Google</option>
+                            <option>Word of mouth</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="buttons actionsBetween">
+                        <button type="button" class="btnGhost" data-back>Back</button>
+                        <button type="submit" class="submitBtn" data-next>Submit</button>
                     </div> 
                 </div>
             </form>
