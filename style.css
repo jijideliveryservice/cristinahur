@@ -83,6 +83,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #fbf8ef;
+    background-image: url("./assets/paper_grain_texture.png");
   }
 
   body.locked {
