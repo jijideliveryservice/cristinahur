@@ -50,7 +50,7 @@
 /*font start*/
   h1 {
       font: var(--h1)
-      
+
   }
 
   h2 {
@@ -198,7 +198,14 @@
   }
 /*header end*/
 
-
+button .resume {
+  font: var(--header-a);
+  color: white;
+  padding: 40px 64px 40px 64px;
+  border: none;
+  background-color: var(--dark-gray);
+  text-align: center;
+}
 
 /*grid start*/
   .grid {
