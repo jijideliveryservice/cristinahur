@@ -78,10 +78,10 @@
   
   nav a {
     font: var(--header-a);
-    color: var(--dark-gray);
     text-decoration: none;
     padding: 8px 0px 8px 0px;
     border-bottom: 1px solid transparent;  
+    color: var(--ultra-light-beige);
   }
 /*font end*/
 
@@ -129,6 +129,9 @@
     box-sizing: border-box;
     padding: 24px 32px;
     z-index: 80;
+    position: sticky;
+    top: 0;
+    left: 0;
   }
 
   header .leftLinks, header .rightLinks {
@@ -137,14 +140,17 @@
 
   header .rightLinks {
     text-align: right;
+    color: var(--ultra-light-beige);
   }
 
   header .leftLinks {
     text-align: left;
+    color: var(--ultra-light-beige);
   }
 
   header .logo {
     text-align: center;
+    color: var(--ultra-light-beige);
   }
 
   header .leftLinks {
@@ -164,7 +170,7 @@
     left: 0;
     width: 0%;
     height: .8px;
-    background-color: var(--light-gray);
+    background-color: var(--ultra-light-beige);
     transition: width 0.8s ease; /* Animate the width */
   }
 
@@ -179,15 +185,15 @@
 
   header nav a.active::after {
     width: 100%;
-    background-color: var(--light-gray);
+    background-color: var(--ultra-light-beige);
   }
 
   header nav a:hover {
-    color: var(--light-gray);
+    color: var(--ultra-light-beige);
   }
 
   header nav a.active {
-    color: var(--light-gray);
+    color: var(--ultra-light-beige);
   }
 /*header end*/
 
