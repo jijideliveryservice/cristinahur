@@ -50,6 +50,7 @@
 /*font start*/
   h1 {
       font: var(--h1)
+      
   }
 
   h2 {
