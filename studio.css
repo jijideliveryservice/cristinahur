@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url("https://use.typekit.net/ofo5hjd.css");
 
+@font-face {
+  font-family: "customslang";
+  src: url('./assets/customslang.woff') format('woff'),
+  url('./assets/customslang.woff2') format('woff2');
+  font-style: italic;
+}
+
 :root {
   --font-primary: 'Poppins', sans-serif;
   --font-secondary: "larken", sans-serif;
@@ -21,22 +28,23 @@
   --bold-weight: 700;
 
   --dark-green: #484C41;
-  --dark-gray: #2C2A26;
+  --dark-gray: #2F1B12;
   --light-gray: #858585;
   --ultra-light-gray: #f8f6f6;
-  --vintage-yellow: rgb(203, 169, 0);
-  --vintage-red: rgb(126, 0, 32);
+  --beige: #EDE9DE;
+  --ultra-light-beige: #F9F6ED;
+  --vintage-yellow: #E4C527;
 
   --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
   --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
-  --h1: normal normal var(--thin-weight) var(--font-size-xl)/1.5 var(--font-secondary);
+  --h1: normal normal var(--thin-weight) var(--font-size-xl)/1 var(--font-secondary);
   --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
   --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
-  --p: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-primary);
+  --h4: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-secondary);
+  --p: normal normal var(--light-weight) var(--font-size-xs)/1.5 var(--font-primary);
 
   --grid-step: 24px;
 }
-
 
 
 /*font start*/
@@ -52,6 +60,10 @@
       font: var(--h3);
   }
 
+  h4 {
+    font: var(--h4);
+  }
+
   .logo {
       font: var(--header-logo);
       text-decoration: none;
@@ -63,6 +75,7 @@
       color: var(--dark-gray);
   }
 
+  
   nav a {
     font: var(--header-a);
     color: var(--dark-gray);
@@ -73,28 +86,24 @@
 /*font end*/
 
 
-
 /*body start*/
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background: none; /* remove background-color + background-image from body */
-    position: relative;
+    font-family: var(--font-secondary);
+    color: var(--dark-gray);
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin:0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--beige);
+    /*background-image: url("./assets/paper_grain_texture.png");*/
   }
-
-/* paper + bg color layer */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background-color: #fbf8ef;
-    background-image: url("./assets/paper_grain_texture.png");
-    pointer-events: none;
-  }
-
 
   body.locked {
     overflow: hidden;
@@ -111,11 +120,6 @@
 
 
 /*header start*/
-  header, main, footer, section {
-    position: relative;
-    z-index: 2;
-  }
-
   header {
     display: flex;
     flex-direction: row;
@@ -124,6 +128,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 24px 32px;
+    z-index: 80;
   }
 
   header .leftLinks, header .rightLinks {
@@ -186,6 +191,8 @@
   }
 /*header end*/
 
+
+
 /*grid start*/
   .grid {
     height: 100vh;
@@ -206,7 +213,6 @@
   .grid-wrap {
     position: fixed;
     pointer-events: none;
-    z-index: 1;
     inset: 0;
   }
 
@@ -263,30 +269,66 @@
 
 /*grid ends*/
 
+
+
 /*section1 starts*/
   section {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+ 
+  .hero-section {
+    background-image: url("./assets/hero-image.png");
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    margin-top: -80px;   
+    position: relative; 
+  }
+
+  .hero-section h1 {
+    position: absolute;
+    bottom: 0;
+    color: var(--beige);
+    font-size: clamp(4rem, 15vw, 20rem);
+    line-height: 0;
+    /*margin: 0; parallax text option*/
+    text-align: center;
     width: 100%;
   }
 
   .section1 {
     position: relative;
-
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: calc(100vh - 80px);
+    flex-direction: column;
     box-sizing: border-box;
-    text-align: center;
+    padding: 40px 32px 40px 32px;
+    gap: 32px;
   }
-      
-  .shortblurb {
-    max-width: 800px;
-    z-index: 1;
-    padding-left: 32px;
-    padding-right: 32px;
-    position: relative;
 
+   .binder {
+    width: 30%;
+    position: absolute;
+    right: 10%;
+    top: 30%;
+    z-index: 20px;
+  }
+
+      
+  .section1 .shortblurb {
+    z-index: 1;
+    position: relative;
+  }
+
+  .shortblurb h1 {
+    font-size: clamp(2rem, 3vw, 4rem);
+    margin: 0;
+  }
+
+  .section1 .resume {
+    width: 15%;
   }
 
   .studio {
@@ -317,7 +359,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-  }
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #F0EEEA;
+ }
 
   .vibe {
     display: flex;
@@ -325,6 +371,11 @@
     align-items: center;
     text-align: center;
     position: relative;
+    background-image: url("./assets/mood.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    min-height: 100vh;
   }
 
   .binderCh {
@@ -373,11 +424,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 64px;
+    text-align: center;
+    padding-top: 180px;
   }
 
   .text {
     max-width: 450px;
+  }
+
+  .ineprofile {
+    width: 50%;
+    padding-top: 56px;
   }
 
   
@@ -405,38 +462,92 @@
     position: absolute;
     overflow: hidden;
 
-    background-position: center;
+    background-position: 50% 15%;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 90%;
-    height: 50%;
-    border-radius: 300px;
-    background-image: url("./assets/kaboompics_glass-of-water-wooden-stool-books-30393.jpg");
-    /* do not delete: background-attachment: fixed; fixed background parallax*/
+    height: 70%;
+    border-radius: 80px;
+    background-image: url("./assets/DSCF1442.png");
+    background-attachment: fixed;
     will-change: width, height, border-radius;
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-
+    gap: 16px;
     padding-left: 32px;
     padding-right: 32px;
     max-width: 800px;
     z-index: 1;
-    color: var(--dark-gray);
+    color: var(--vintage-yellow);
   }
 
+  .line2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--vintage-yellow);
+    gap: 40px;
+  }
 
-  .resume {
+  .afarcafe {
+    width: 40%;
+  }
+
+  p.leftWord, p.rightWord {
+    flex: 1;
+  }
+
+  .leftWord {
+    border: 2px solid var(--vintage-yellow);
+    border-radius: 100%;
+    padding: 16px 24px 16px 24px;
+    text-align: center;
+  }
+
+  .rightWord {
+    text-align: left;
+    line-height: 1;
+  }
+
+  p.slang {
+    font-family: "customslang";
+    font-size: 24px;
+  }
+
+  .line2 p.slang {
+    color: var(--vintage-yellow);
+  }
+
+  .content .resume {
     font: var(--header-a);
     color: white;
     padding: 40px 64px 40px 64px;
     border: none;
     background-color: var(--dark-gray);
+    text-align: center;
+  }
+
+  .pt1 {
+    font-size: 140px;
+    line-height: 0;
+    margin-bottom: -1px;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .pt2 {
+    font-size: 120px;
+    line-height: 0;
+    margin-top: -10px;
+    text-align: center;
+    font-weight: bold;
   }
 
   .introImg {
@@ -446,14 +557,14 @@
     left: 50%;
     width: 90%;
     height: 50%;
-    border-radius: 300px;
+    border-radius: 100px;
     overflow: hidden; /* Keeps overlay inside rounded corners */
   }
 
   .imgfilter {
     position: absolute;
     width: 100%;
-    /*border-radius: 300px;*/
+    border-radius: 100px;
     overflow: hidden; /* Keeps overlay inside rounded corners */
   }
 
@@ -464,7 +575,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /*background-color: rgba(72, 76, 65, 0.3); image overlay*/
+    background-color: rgba(85, 84, 82, 0.4); /*image overlay*/
   }
 
   .section3 {
@@ -472,6 +583,8 @@
     height: 70vh;
     z-index: 0;
   }
+
+ 
 
 /*section ends*/
 
@@ -699,5 +812,7 @@
     }
 
   }
+
+
 
 /* Mobile Ends */
