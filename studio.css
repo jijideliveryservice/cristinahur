@@ -581,6 +581,12 @@ section {
       header {
         background-color: var(--ultra-light-beige);
         z-index: 1;
+        align-items: center;
+      }
+
+      .hero-section {
+        min-height:100vh;
+        min-height: 100svh;
       }
 
       /* turn off desktop navigation */
@@ -702,9 +708,7 @@ section {
         padding: 40px 24px 40px 24px;
       }
 
-      
-
-  }
+    }
 
     @supports (height: 100svh) {
       .section-three { 
