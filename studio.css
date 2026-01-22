@@ -680,7 +680,7 @@ section {
         background-attachment: scroll;   /* turn off fixed on iOS */
         background-size: cover;          /* avoid the “floating image” look */
         background-position: center;     /* or center 60% etc */
-        height: 100svh;                  /* define height, not just min-height */
+        height: 80svh;                  /* define height, not just min-height */
         margin-top: 0;  
       }
        /*hero ends mobile*/
