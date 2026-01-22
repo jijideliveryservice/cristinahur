@@ -329,7 +329,6 @@ section {
   }
       
   .section-one .shortblurb {
-    z-index: 1;
     position: relative;
   }
 
