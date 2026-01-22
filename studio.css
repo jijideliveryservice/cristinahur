@@ -30,12 +30,12 @@
   --dark-green: #484C41;
   --dark-gray: #2F1B12;
   --light-gray: #858585;
-  --ultra-light-gray: #f8f6f6;
+  --ultra-light-gray: #F0EEEA;
   --beige: #EDE9DE;
   --ultra-light-beige: #F9F6ED;
   --vintage-yellow: #E4C527;
 
-  --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
+  --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
   --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
   --h1: normal normal var(--thin-weight) var(--font-size-xl)/1 var(--font-secondary);
   --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
@@ -49,16 +49,16 @@
 
 /*font start*/
   h1 {
-      font: var(--h1)
+    font: var(--h1)
 
   }
 
   h2 {
-      font: var(--h2);
+    font: var(--h2);
   }
 
   h3 {
-      font: var(--h3);
+    font: var(--h3);
   }
 
   h4 {
@@ -66,25 +66,35 @@
   }
 
   .logo {
-      font: var(--header-logo);
-      text-decoration: none;
-      color: var(--dark-gray);
+    font: var(--header-logo);
+    text-decoration: none;
+    color: var(--beige);
+
   }
 
   p {
-      font: var(--p);
-      color: var(--dark-gray);
+    font: var(--p);
   }
 
-  
   nav a {
     font: var(--header-a);
     text-decoration: none;
     padding: 8px 0px 8px 0px;
     border-bottom: 1px solid transparent;  
-    color: var(--ultra-light-beige);
   }
 /*font end*/
+
+
+/* button start*/
+  button.resume {
+    font: var(--header-a);
+    color: white;
+    padding: 40px 64px 40px 64px;
+    border: none;
+    background-color: var(--dark-gray);
+    text-align: center;
+  }
+/* button end*/
 
 
 /*body start*/
@@ -114,7 +124,6 @@
 
   main {
     flex: 1;
-    
     position: relative;   
   }
 /*body end*/
@@ -133,10 +142,22 @@
     position: sticky;
     top: 0;
     left: 0;
+
+    transition: 
+      background-color .25s ease-in-out;
+  }
+
+  header:hover {
+    background-color: var(--ultra-light-beige);
   }
 
   header .leftLinks, header .rightLinks {
     flex: 1;
+  }
+
+  header nav a {
+    position: relative;
+    color: var(--ultra-light-beige);
   }
 
   header .rightLinks {
@@ -145,23 +166,14 @@
   }
 
   header .leftLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
     text-align: left;
-    color: var(--ultra-light-beige);
   }
 
   header .logo {
     text-align: center;
-    color: var(--ultra-light-beige);
-  }
-
-  header .leftLinks {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  header nav a {
-      position: relative;
   }
 
   header nav a::after {
@@ -171,8 +183,8 @@
     left: 0;
     width: 0%;
     height: .8px;
-    background-color: var(--ultra-light-beige);
-    transition: width 0.8s ease; /* Animate the width */
+    background-color: var(--underline-color, currentColor);
+    transition: width 0.8s ease;
   }
 
 
@@ -180,13 +192,8 @@
     width: 100%;
   }
 
-  header nav a.active {
-    color: var(--light-gray);
-  }
-
   header nav a.active::after {
     width: 100%;
-    background-color: var(--ultra-light-beige);
   }
 
   header nav a:hover {
@@ -197,15 +204,6 @@
     color: var(--ultra-light-beige);
   }
 /*header end*/
-
-button.resume {
-  font: var(--header-a);
-  color: white;
-  padding: 40px 64px 40px 64px;
-  border: none;
-  background-color: var(--dark-gray);
-  text-align: center;
-}
 
 /*grid start*/
   .grid {
@@ -285,38 +283,38 @@ button.resume {
 /*grid ends*/
 
 
+section {
+  width: 100%;
+  overflow-x: hidden;
+}
 
-/*section1 starts*/
-  section {
-    width: 100%;
-    overflow-x: hidden;
-  }
 
- 
-  .hero-section {
-    background-image: url("./assets/hero-image.JPG");
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 100vh;
-    margin-top: -80px;   
-    position: relative; 
-  }
+.hero-section {
+  background-image: url("./assets/hero-image.JPG");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  margin-top: -80px;   
+  position: relative; 
+}
 
-  .hero-section h1 {
-    position: absolute;
-    bottom: 0;
-    color: var(--beige);
-    font-size: clamp(4rem, 15vw, 20rem);
-    line-height: 0;
-    /*margin: 0; parallax text option*/
-    text-align: center;
-    width: 100%;
-  }
+.hero-section h1 {
+  position: absolute;
+  bottom: 0;
+  color: var(--beige);
+  font-size: clamp(2rem, 15vw, 20rem);
+  line-height: 0;
+  /*margin: 0; parallax text option*/
+  text-align: center;
+  width: 100%;
+}
 
-  .section1 {
+
+/*section-one starts*/
+  .section-one {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -324,17 +322,8 @@ button.resume {
     padding: 40px 32px 40px 32px;
     gap: 32px;
   }
-
-   .binder {
-    width: 30%;
-    position: absolute;
-    right: 10%;
-    top: 28%;
-    z-index: 20px;
-  }
-
       
-  .section1 .shortblurb {
+  .section-one .shortblurb {
     z-index: 1;
     position: relative;
   }
@@ -344,7 +333,7 @@ button.resume {
     margin: 0;
   }
 
-  .section1 .resume {
+  .section-one .resume {
     width: 15%;
   }
 
@@ -356,30 +345,27 @@ button.resume {
     height: 60px;
     width: auto;
   }
+/*section one ends*/
 
-  .profilepic {
-    width: 6%;
-    left: 20%;
-    position: absolute; 
-    transition: top .5s ease;
-  }
 
-  .industry {
-    width: 6%;
-    right: 30%;
-    top: 60%;
+   .binder {
+    width: 40%;
     position: absolute;
-    z-index: 2;
+    right: 10%;
+    top: 28%;
+    z-index: 20px;
   }
 
-  .section4 {
+
+/*sectiontwo starts*/
+  .section-two {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
     min-height: 100vh;
     padding-top: 80px;
     padding-bottom: 80px;
-    background-color: #F0EEEA;
+    background-color: var(--ultra-light-gray);
  }
 
   .vibe {
@@ -395,7 +381,7 @@ button.resume {
     min-height: 100vh;
   }
 
-  .section4 .shortblurb {
+  .section-two .shortblurb {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -414,11 +400,13 @@ button.resume {
     padding-top: 56px;
   }
 
+/*section 2 ends*/
   
 
 
-/*section2 starts*/
-  .section2 {
+/*section 3 starts*/
+
+  .section-three {
     position: sticky; 
     top: 0;  
     /*background-color: var(--dark-green);*/
@@ -430,7 +418,7 @@ button.resume {
     text-align: center;
   }
 
-  .section2 .container {
+  .section-three .container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,6 +472,7 @@ button.resume {
   
   .creation {
     margin-right: -30px;
+    text-align: left;
   }
 
   p.slang {
@@ -513,18 +502,6 @@ button.resume {
     text-align: center;
   }
 
-
-  .introImg {
-    background-attachment: fixed;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 90%;
-    height: 50%;
-    border-radius: 100px;
-    overflow: hidden; /* Keeps overlay inside rounded corners */
-  }
-
   .imgfilter {
     position: absolute;
     width: 100%;
@@ -541,16 +518,15 @@ button.resume {
     height: 100%;
     background-color: rgba(85, 84, 82, 0.4); /*image overlay*/
   }
+/*section 3 ends*/
 
-  .section3 {
+/*section 4 start*/
+  .section-four {
     /*background-color: var(--dark-green);*/
     height: 70vh;
     z-index: 0;
   }
-
- 
-
-/*section ends*/
+/*section 4 ends*/
 
 /*footer*/
   .footer {
@@ -602,6 +578,11 @@ button.resume {
     }
 
     @media (max-width: 768px) {
+      header {
+        background-color: var(--ultra-light-beige);
+        z-index: 1;
+      }
+
       /* turn off desktop navigation */
       header .leftLinks,
       header .rightLinks {
@@ -618,6 +599,10 @@ button.resume {
         font: var(--header-a);
         color: var(--dark-gray);
         text-decoration: none;
+      }
+
+      .logo {
+        color: var(--dark-gray);
       }
 
       .menuPanel {
@@ -684,11 +669,11 @@ button.resume {
 
   /*sections start - mobile*/
     @media (max-width: 768px) {
-      .section2 {
+      .section-three {
         touch-action: pan-y;
       }
 
-      .section2 .container {
+      .section-three .container {
         /* Center it perfectly */
         left: 50%;
         top: 50%;
@@ -727,13 +712,13 @@ button.resume {
   }
 
     @supports (height: 100svh) {
-      .section2 { 
+      .section-three { 
         height: 100svh; 
       }
     }
 
     @supports (height: 100dvh) {
-      .section2 { height: 100dvh; }
+      .section-three { height: 100dvh; }
     }
   
   /*mobile sections start*/
@@ -763,13 +748,13 @@ button.resume {
   /*1320px*/
     @media (max-width: 1362px) {
 
-    .section4 {
+    .section-two {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
 
-    .section4 .shortblurb {
+    .section-two .shortblurb {
       width: 100%;
       display: flex;
       flex-direction: column;

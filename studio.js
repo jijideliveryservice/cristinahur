@@ -1,3 +1,45 @@
+//header hover change
+const headerTag = document.querySelector("header")
+const links = document.querySelectorAll("header nav a") // ALL links, not one
+const logoTag = document.querySelector(".logo")
+const activeLink = document.querySelector("header nav a.active");
+
+
+function hoverEnter () {
+  links.forEach(link => {
+    link.style.color = "var(--dark-gray)"
+    logoTag.style.color = "var(--dark-gray)"
+    link.style.setProperty("--underline-color", "var(--dark-gray)");
+  })
+}
+
+function hoverLeave () {
+  logoTag.style.color = ""
+
+  links.forEach(link => {
+      link.style.color = ""; // 🔑 removes inline override
+      link.style.removeProperty("--underline-color")
+  })
+}
+headerTag.addEventListener("mouseenter", hoverEnter)
+headerTag.addEventListener("mouseleave", hoverLeave)
+hoverLeave ()
+
+//header scroll change
+document.addEventListener("scroll", function () {
+  if (window.scrollY > 1) {
+    headerTag.style.backgroundColor = "var(--ultra-light-beige)"
+    hoverEnter ()
+  }
+  else {
+    headerTag.style.backgroundColor = ""
+    hoverLeave ()
+  }
+})
+
+
+
+
 //side menu
 const openMenuTag = document.querySelector(".open-menu")
 const closeMenuTag = document.querySelector(".close-button")
@@ -91,11 +133,11 @@ window.addEventListener("load", () => {
 
 
 //resume request section 
-const section2 = document.querySelector(".section2");
-const container = document.querySelector(".section2 .container");
+const section2 = document.querySelector(".section-three");
+const container = document.querySelector(".section-three .container");
 
 if (!section2 || !container) {
-  console.warn("Missing .section2 or .section2 .container");
+  console.warn("Missing .section-three or .section-three .container");
 }
 
 let progress = 0;
