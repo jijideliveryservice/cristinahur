@@ -587,7 +587,7 @@ section {
       .hero-section {
         min-height:100vh;
         min-height: 100svh;
-        background-size: contain;
+        background-size: auto;
       }
 
       /* turn off desktop navigation */
@@ -755,6 +755,13 @@ section {
     .vibe {
       background-size: 90%;
     }
+
+    .hero-section {
+        min-height:100vh;
+        min-height: 100svh;
+        background-size: auto;
+      }
+
     
   }
 
