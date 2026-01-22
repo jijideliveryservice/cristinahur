@@ -114,7 +114,7 @@
 
   main {
     flex: 1;
-    min-height: calc(100vh - 100px); 
+    
     position: relative;   
   }
 /*body end*/
@@ -198,7 +198,7 @@
   }
 /*header end*/
 
-button .resume {
+button.resume {
   font: var(--header-a);
   color: white;
   padding: 40px 64px 40px 64px;
@@ -329,7 +329,7 @@ button .resume {
     width: 30%;
     position: absolute;
     right: 10%;
-    top: 30%;
+    top: 28%;
     z-index: 20px;
   }
 
@@ -395,46 +395,6 @@ button .resume {
     min-height: 100vh;
   }
 
-  .binderCh {
-    width: 100%;
-  }
-
-  .sticker {
-    width: 20%;
-    position: absolute;
-    top: 10%;
-    left: 30%;
-  }
-
-  .redMarble {
-    width: 30%; 
-    position: absolute;
-    left: 12%;
-    bottom: -15%;
-    z-index: 1;
-  }
-
-  .hangerTag {
-    width: 20%; 
-    position: absolute;
-    bottom: 0%;
-    left: 10%;
-  }
-
-  .burgandySwatch {
-    position: absolute;
-    width: 30%;
-    right: 4%;
-    bottom: 10%;
-  }
-
-  .fabricSwatch {
-    position: absolute;
-    width: 15%;
-    bottom: -10%;
-    right: 4%;
-  }
-
   .section4 .shortblurb {
     width: 100%;
     display: flex;
@@ -490,56 +450,58 @@ button .resume {
     will-change: width, height, border-radius;
   }
 
-  .content {
+  .mainCTAarea {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    gap: 16px;
-    padding-left: 32px;
-    padding-right: 32px;
-    max-width: 800px;
     z-index: 1;
     color: var(--vintage-yellow);
+    gap: 16px;
   }
 
-  .line2 {
+ 
+  .overlap {
+    background-image: url("./assets/DSCF0994.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    color: var(--vintage-yellow);
-    gap: 40px;
+    align-items: center;
   }
 
-  .afarcafe {
-    width: 40%;
-  }
-
-  p.leftWord, p.rightWord {
-    flex: 1;
-  }
-
-  .leftWord {
-    border: 2px solid var(--vintage-yellow);
+  .connection {
+    margin-left: -30px;
+    border: 1px solid var(--vintage-yellow);
     border-radius: 100%;
-    padding: 16px 24px 16px 24px;
-    text-align: center;
+    padding: 8px 16px 8px 16px;
   }
-
-  .rightWord {
-    text-align: left;
-    line-height: 1;
+  
+  .creation {
+    margin-right: -30px;
   }
 
   p.slang {
     font-family: "customslang";
-    font-size: 24px;
+    color: var(--vintage-yellow);
   }
 
-  .line2 p.slang {
-    color: var(--vintage-yellow);
+  .letswork {
+    margin-bottom: -30px;
+    font-size: clamp(24px, 10vw, 100px);
+    z-index: 100;
+  }
+
+  .together {
+    margin-top: -50px;
+    margin-bottom: 10px;
+    font-size: clamp(24px, 10vw, 80px);
+
   }
 
   .content .resume {
@@ -551,21 +513,6 @@ button .resume {
     text-align: center;
   }
 
-  .pt1 {
-    font-size: 140px;
-    line-height: 0;
-    margin-bottom: -1px;
-    z-index: 2;
-    text-align: center;
-  }
-
-  .pt2 {
-    font-size: 120px;
-    line-height: 0;
-    margin-top: -10px;
-    text-align: center;
-    font-weight: bold;
-  }
 
   .introImg {
     background-attachment: fixed;
