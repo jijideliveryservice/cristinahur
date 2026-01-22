@@ -576,24 +576,16 @@ section {
   
 /* Mobile Starts */
 
-  /*mobile menu start*/
+  
     a.open-menu, .menuPanel, .close-button {
       display: none; /*hide mobile stuff on desktop*/
     }
 
+
+
     @media (max-width: 768px) {
-      header {
-        background-color: var(--ultra-light-beige);
-        z-index: 1;
-        align-items: center;
-      }
 
-      .hero-section {
-        min-height:100vh;
-        min-height: 100svh;
-        background-size: auto;
-      }
-
+      /*mobile menu start*/
       /* turn off desktop navigation */
       header .leftLinks,
       header .rightLinks {
@@ -610,6 +602,12 @@ section {
         font: var(--header-a);
         color: var(--dark-gray);
         text-decoration: none;
+      }
+
+      header {
+        background-color: var(--ultra-light-beige);
+        z-index: 1;
+        align-items: center;
       }
 
       .logo {
@@ -675,12 +673,20 @@ section {
         font: var(--header-a);
         color: var(--dark-gray);
       }
-  }
-  /*mobile menu ends*/
+      /*mobile menu ends*/
 
-  /*sections start - mobile*/
-    @media (max-width: 768px) {
+      /*hero starts mobile*/
+      .hero-section {
+        min-height:100vh;
+        min-height: 100svh;
+        background-size: contain;
+      }
+       /*hero ends mobile*/
 
+
+      /*sections start - mobile*/
+
+      /*section one mobile*/
       .studio {
         display: inline-block;
         vertical-align: middle;
@@ -690,7 +696,35 @@ section {
         width: auto;
       }
 
+      /*section two mobile*/
+      .section-two {
+      display: flex;
+      flex-direction: column;
+      }
+    
+      .vibe {
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 80vh;
+      }
 
+      .ineprofile {
+        width:80%;
+      }
+
+
+      .section-two .shortblurb{
+        padding: 40px;
+        box-sizing: border-box;
+      }
+
+      .binder {
+        display: none;
+      }
+
+      /*section three mobile*/
       .section-three {
         touch-action: pan-y;
       }
@@ -705,7 +739,7 @@ section {
         width: 70%;
         height: 90%;
 
-        /* Big oval ends (this is the key) */
+        /* Big oval ends*/
         border-radius: 300px;
       }
 
@@ -713,23 +747,8 @@ section {
         padding: 40px 24px 40px 24px;
       }
 
-    }
-
-    @supports (height: 100svh) {
-      .section-three { 
-        height: 100svh; 
-      }
-    }
-
-    @supports (height: 100dvh) {
-      .section-three { height: 100dvh; }
-    }
-  
-  /*mobile sections start*/
-
-  /*footer start*/
-    @media (max-width: 768px) {
-      .footer1 {
+      /*footer mobile */
+       .footer1 {
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -746,8 +765,22 @@ section {
       .footer2 {
         text-align: center;
       }
+      /*footer end*/
+
+  }
+  
+
+  /*tablet*/
+    @supports (height: 100svh) {
+      .section-three { 
+        height: 100svh; 
+      }
     }
-  /*footer end*/
+
+    @supports (height: 100dvh) {
+      .section-three { height: 100dvh; }
+    }
+  
 
   /*1320px*/
     @media (max-width: 1200px) {
@@ -762,35 +795,6 @@ section {
     
   }
 
-  @media (max-width: 768px) {
-    .section-two {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .hero-section {
-        min-height:100vh;
-        min-height: 100svh;
-        background-size: contain;
-      }
-
-
-    .ineprofile {
-      width:80%;
-    }
-
-
-    .section-two .shortblurb{
-      padding: 40px;
-      box-sizing: border-box;
-    }
-
-    .binder {
-      display: none;
-    }
-  }
-
- 
 
 
 /* Mobile Ends */
