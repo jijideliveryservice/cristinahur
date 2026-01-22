@@ -22,8 +22,12 @@ function hoverLeave () {
   })
 }
 headerTag.addEventListener("mouseenter", hoverEnter)
-headerTag.addEventListener("mouseleave", hoverLeave)
-hoverLeave ()
+
+headerTag.addEventListener("mouseleave", function () {
+  if (window.scrollY < 1) {
+    hoverLeave()
+  }
+})
 
 //header scroll change
 document.addEventListener("scroll", function () {

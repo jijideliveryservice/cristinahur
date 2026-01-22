@@ -329,7 +329,7 @@ section {
   }
 
   .shortblurb h1 {
-    font-size: clamp(2rem, 3vw, 4rem);
+    font-size: clamp(1rem, 3vw, 4rem);
     margin: 0;
   }
 
@@ -340,7 +340,7 @@ section {
   .studio {
     display: inline-block;
     vertical-align: middle;
-    border-radius: 12px;
+    border-radius: 4px;
     object-fit: cover;
     height: 60px;
     width: auto;
@@ -378,7 +378,7 @@ section {
     background-position: left;
     background-repeat: no-repeat;
     background-size: 80%;
-    min-height: 100vh;
+    height: 100vh;
   }
 
   .section-two .shortblurb {
@@ -669,6 +669,17 @@ section {
 
   /*sections start - mobile*/
     @media (max-width: 768px) {
+
+      .studio {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 4px;
+        object-fit: cover;
+        height: 16px;
+        width: auto;
+      }
+
+
       .section-three {
         touch-action: pan-y;
       }
@@ -689,22 +700,6 @@ section {
 
       .resume {    
         padding: 40px 24px 40px 24px;
-        width: 100%;
-      }
-
-      .profilepic {
-        width: 30%;
-        left: -4%;
-        position: absolute; 
-        transition: top .5s ease;
-      }
-
-      .industry {
-        width: 20%;
-        right: 8%;
-        top: 76%;
-        position: absolute;
-        z-index: 2;
       }
 
       
@@ -746,26 +741,49 @@ section {
   /*footer end*/
 
   /*1320px*/
-    @media (max-width: 1362px) {
+    @media (max-width: 1200px) {
 
+    .section-two {
+      padding-top: 0;
+    }
+
+    .vibe {
+      background-size: 90%;
+    }
+    
+  }
+
+  @media (max-width: 768px) {
     .section-two {
       display: flex;
       flex-direction: column;
+    }
+  
+    .vibe {
       width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh;
+
     }
 
-    .section-two .shortblurb {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 64px;
+    .ineprofile {
+      width:80%;
+    }
+
+
+    .section-two .shortblurb{
+      padding: 40px;
       box-sizing: border-box;
     }
 
+    .binder {
+      display: none;
+    }
   }
 
+ 
 
 
 /* Mobile Ends */
