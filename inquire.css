@@ -496,12 +496,20 @@
       display: grid;
       justify-content: center;
       width: 100%;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
       height: auto;
       box-sizing: border-box;
       align-items: stretch;
       border-top: 1px solid var(--light-gray);
       border-bottom: 1px solid var(--light-gray);
+    }
+
+    .brand-imagery {
+      min-height: 60vh; 
+      width: 100%;
+      background-position: center;
+      background-size: cover;
     }
 
     /*footer start*/

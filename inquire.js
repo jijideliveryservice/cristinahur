@@ -69,3 +69,4 @@ form.addEventListener("click", (e) => {
 
 // start on step 1
 showStep(1);
+
