@@ -677,9 +677,11 @@ section {
 
       /*hero starts mobile*/
       .hero-section {
-        min-height:100vh;
-        min-height: 100svh;
-        background-size: contain;
+        background-attachment: scroll;   /* turn off fixed on iOS */
+        background-size: cover;          /* avoid the “floating image” look */
+        background-position: center;     /* or center 60% etc */
+        height: 100svh;                  /* define height, not just min-height */
+        margin-top: 0;  
       }
        /*hero ends mobile*/
 
