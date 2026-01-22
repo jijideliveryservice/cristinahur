@@ -24,6 +24,7 @@
   --dark-gray: #2C2A26;
   --light-gray: #858585;
   --ultra-light-gray: #f8f6f6;
+  --off-white: #fdfcf9;
 
   --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
   --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
@@ -83,7 +84,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /*background-color: #fbf8ef;*/
+    background-color: var(--ultra-light-beige);
     /*background-image: url("./assets/paper_grain_texture.png");*/
   }
 
