@@ -87,13 +87,16 @@
 
 
 /* button start*/
-  button.resume {
+  button {
     font: var(--header-a);
-    color: white;
     padding: 40px 64px 40px 64px;
     border: none;
-    background-color: var(--dark-gray);
     text-align: center;
+  }
+
+  .resume {
+    color: white;
+    background-color: var(--dark-gray);
   }
 /* button end*/
 
@@ -760,7 +763,7 @@ section {
     .hero-section {
         min-height:100vh;
         min-height: 100svh;
-        background-size: auto;
+        background-size: contain;
       }
 
     
