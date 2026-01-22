@@ -700,8 +700,9 @@ section {
 
       /*section two mobile*/
       .section-two {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
       }
     
       .vibe {
