@@ -759,13 +759,6 @@ section {
     .vibe {
       background-size: 90%;
     }
-
-    .hero-section {
-        min-height:100vh;
-        min-height: 100svh;
-        background-size: contain;
-      }
-
     
   }
 
@@ -775,14 +768,12 @@ section {
       flex-direction: column;
     }
   
-    .vibe {
-      width: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 80vh;
+    .hero-section {
+        min-height:100vh;
+        min-height: 100svh;
+        background-size: contain;
+      }
 
-    }
 
     .ineprofile {
       width:80%;
