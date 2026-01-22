@@ -574,7 +574,7 @@ section {
 /* Mobile Starts */
 
   
-    a.open-menu, .menuPanel, .close-button {
+   .open-menu, .menuPanel, .close-button {
       display: none; /*hide mobile stuff on desktop*/
     }
 
@@ -594,11 +594,13 @@ section {
       }
 
       /* turn on menu */
-      a.open-menu {
+      .open-menu {
         display: block;
         font: var(--header-a);
         color: var(--dark-gray);
         text-decoration: none;
+        padding: 0;
+        background-color: transparent;
       }
 
       header {
