@@ -711,13 +711,17 @@ section {
       }
 
       .ineprofile {
-        width:80%;
+        width: 90%;
       }
 
 
       .section-two .shortblurb{
-        padding: 40px;
+        padding: 0 32px 32px 32px;
         box-sizing: border-box;
+      }
+
+      .text h4 {
+        padding-bottom: 16px;
       }
 
       .binder {
