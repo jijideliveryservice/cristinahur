@@ -52,6 +52,7 @@ const mainTag = document.querySelector("main")
 const bodyTag = document.querySelector("body")
 
 openMenuTag.addEventListener("click", function () {
+  e.preventDefault()
   menuPanelTag.classList.add("open")
   bodyTag.classList.add("menu-open")
 
