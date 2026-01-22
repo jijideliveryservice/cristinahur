@@ -24,6 +24,7 @@
   --dark-gray: #2C2A26;
   --light-gray: #858585;
   --ultra-light-gray: #f8f6f6;
+   --off-white: #fffffd;
 
   --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
   --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
@@ -98,7 +99,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #fbf8ef;
+    background-color: var(--off-white);
     background-image: url("./assets/paper_grain_texture.png");
   }
 
@@ -499,3 +500,25 @@
     }
 }
 
+
+  /*footer start*/
+    @media (max-width: 768px) {
+      .footer1 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+
+      .footer1 nav{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+
+      .footer2 {
+        text-align: center;
+      }
+    }
+  /*footer end*/

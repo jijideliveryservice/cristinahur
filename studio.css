@@ -33,6 +33,7 @@
   --ultra-light-gray: #F0EEEA;
   --beige: #EDE9DE;
   --ultra-light-beige: #F9F6ED;
+  --off-white: #fffffd;
   --vintage-yellow: #E4C527;
 
   --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
@@ -148,7 +149,7 @@
   }
 
   header:hover {
-    background-color: var(--ultra-light-beige);
+    background-color: var(--off-white);
   }
 
   header .leftLinks, header .rightLinks {
