@@ -704,14 +704,14 @@ section {
     
       .vibe {
         width: 100%;
-        background-size: cover;
+        background-size:cover;
         background-position: center;
         background-repeat: no-repeat;
         height: 80vh;
       }
 
       .ineprofile {
-        width: 90%;
+        width: 100%;
       }
 
 
