@@ -70,3 +70,40 @@ form.addEventListener("click", (e) => {
 // start on step 1
 showStep(1);
 
+
+//submit form
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // validate final step before sending
+  if (!validateStep(3)) return;
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbwAoH8SxInnko8GNRuVDqm_ltAeFcguT_TwQCk1TACqhC_k6LKytp5goD1hOR-EWyKSGA/exec",
+      {
+        method: "POST",
+        body: formData, // ✅ FormData (no JSON)
+      }
+    );
+
+    const text = await res.text();
+    let result = {};
+    try { result = JSON.parse(text); } catch {}
+
+  if (res.ok && (result.success === true || result.success === "true")) {
+      // ✅ after successful submit → show Calendly
+      showStep(4);
+      form.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log("Apps Script response:", text);
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Network error. Please try again.");
+  }
+});

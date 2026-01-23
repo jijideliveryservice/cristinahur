@@ -63,8 +63,7 @@
             <div class="contact-info">
                 <div class="info">
                     <h4>Contact</h4>
-                    <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below or 
-                        schedule a discovery call <a href="https://calendly.com/hi-cristinahur/30min" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                    <p>If you are interested in collaborating with us on your next project, please fill out the inquiry form below:</p>
                 </div>
                 <div class="operations">
                     <p>hi.cristinahur@gmail.com</p>
@@ -73,7 +72,7 @@
             </div>
 
             <!--form area--> 
-            <form class="contact-form" action="#" method="post" novalidate>
+            <form class="contact-form" method="post" novalidate>
                 <!--step 1--> 
                 <div class="field-container is-active" data-step="1">
                     <div class="text-field">
@@ -114,19 +113,19 @@
                         <div class="options">
                             <div class="column3">
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="logo design">
+                                    <input type="checkbox" name="service[]" value="logo design">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Logo Design</span>
                                 </label>
 
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="Brand Strategy">
+                                    <input type="checkbox" name="service[]" value="Brand Strategy">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Brand Strategy</span>
                                 </label>
 
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="Packaging Design">
+                                    <input type="checkbox" name="service[]" value="Packaging Design">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Packaging Design</span>
                                 </label>
@@ -134,19 +133,19 @@
 
                              <div class="column3">
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="Website Design">
+                                    <input type="checkbox" name="service[]" value="Website Design">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Website Design</span>
                                 </label>
 
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="Retainer Services">
+                                    <input type="checkbox" name="service[]" value="Retainer Services">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Retainer Services</span>
                                 </label>
 
                                 <label class="check-option">
-                                    <input type="checkbox" name="service" value="Other/Unsure">
+                                    <input type="checkbox" name="service[]" value="Other/Unsure">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">Other/Unsure</span>
                                 </label>
@@ -162,19 +161,19 @@
                         <div class="options">
                             <div class="column3">
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$2,000-$4,500">
+                                    <input type="checkbox" name="budget[]" value="$2,000-$4,500">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$2,000 - $4,500</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$4,500-$6,000">
+                                    <input type="checkbox" name="budget[]" value="$4,500-$6,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$4,500-$6,000</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$6,000-$9,000">
+                                    <input type="checkbox" name="budget[]" value="$6,000-$9,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$6,000-$9,000</span>
                                 </label>
@@ -182,13 +181,13 @@
 
                             <div class="column3">
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$9,000 - $12,000">
+                                    <input type="checkbox" name="budget[]" value="$9,000 - $12,000">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$9,000 - $12,000</span>
                                 </label>
 
                                 <label class="answer">
-                                    <input type="checkbox" name="budget" value="$15,000+">
+                                    <input type="checkbox" name="budget[]" value="$15,000+">
                                     <span class="box" aria-hidden="true"></span>
                                     <span class="text">$15,000+</span>
                                 </label>
@@ -243,48 +242,42 @@
 
 
 
-                <!--step 3--> 
+                <!--step 3-->
                 <div class="field-container" data-step="3">
-                    <!--question 1--> 
-                    <div class="question-container">
-                        <p class="question">Tell us more about your project <span>*</span></p>
+                <div class="question-container">
+                    <p class="question">Tell us more about your project <span>*</span></p>
 
-                        <div class="text-field">
-                            <input id="fullName" name="fullName" type="text" autocomplete="name" required />
-                        </div>
+                    <div class="text-field">
+                    <textarea name="projectDetails" required></textarea>
                     </div>
+                </div>
 
-                    <div class="calendar">
-                        <p class="question">How Did You Hear About Us?</p>
+                <div class="calendar">
+                    <p class="question">How Did You Hear About Us?</p>
 
-                        <select name="socials" required>
-                            <option value="" selected disabled></option>
-                            <option>Google</option>
-                            <option>Word of mouth</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
+                    <select name="referralSource" required>
+                    <option value="" selected disabled></option>
+                    <option>Google</option>
+                    <option>Word of mouth</option>
+                    <option>Other</option>
+                    </select>
+                </div>
 
-                    <div class="buttons actionsBetween">
-                        <button type="button" class="btnGhost" data-back>Back</button>
-                        <button type="button" class="nextBtn" data-next>Next</button>
-                    </div> 
+                <div class="buttons actionsBetween">
+                    <button type="button" class="btnGhost" data-back>Back</button>
+                    <button type="submit" class="submitBtn">Submit</button>
+                </div>
                 </div>
 
 
                  <!--step 4--> 
                 <div class="field-container" data-step="4">
+                    <p>Thank you for your inquiry! Book a discovery call below! </p>
 
                     <!-- Calendly inline widget begin -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/hi-cristinahur/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:200px;height:400px;"></div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/hi-cristinahur/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:100px;height:450px;"></div>
                     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     <!-- Calendly inline widget end -->
-
-
-                     <div class="buttons actionsBetween">
-                        <button type="button" class="btnGhost" data-back>Back</button>
-                        <button type="submit" class="submitBtn" data-next>Submit</button>
-                    </div> 
                 </div>
             </form>
           

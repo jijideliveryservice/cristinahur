@@ -512,6 +512,19 @@
       background-size: cover;
     }
 
+    textarea {
+      background: transparent;
+      border: 0;
+      padding: 8px 0;
+      font: var(--p);
+      color: var(--dark-gray);
+      outline: none;
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    
+
     /*footer start*/
     .footer1 {
       flex-direction: column;
