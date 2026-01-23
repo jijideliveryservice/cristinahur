@@ -20,10 +20,13 @@
     --bold-weight: 700;
 
     --dark-green: #484C41;
-    --dark-gray: #2C2A26;
+    --dark-gray: #2F1B12;
     --light-gray: #858585;
+    --ultra-light-gray: #F0EEEA;
+    --beige: #EDE9DE;
+    --ultra-light-beige: #F9F6ED;
     --off-white: #fffffd;
-
+    --vintage-yellow: #E4C527;
 
     --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
     --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
@@ -229,7 +232,7 @@ a.open-menu, .menuPanel, .close-button {
     font-size: var(--font-size-s);
     gap: 32px;
 
-    color: white;
+    color: var(--off-white);
     text-align: center;
     text-decoration: none;
   }
@@ -361,7 +364,7 @@ a.open-menu, .menuPanel, .close-button {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: white;
+  background-color: var(--off-white);
   padding: 32px;
 }
 
@@ -375,7 +378,7 @@ a.open-menu, .menuPanel, .close-button {
 
 .footer2 {
   text-align: right;
-  color: white;
+  color: var(--off-white);
   padding-right: 32px;
   padding-left: 32px;
 }
@@ -383,7 +386,7 @@ a.open-menu, .menuPanel, .close-button {
 .copyright {
     font-family: var(--font-secondary);
     font-size: 12px;
-    color: white;
+    color: var(--off-white);
     font-weight: var(--thin-weight);
 }
 

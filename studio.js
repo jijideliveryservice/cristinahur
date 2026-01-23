@@ -32,7 +32,7 @@ headerTag.addEventListener("mouseleave", function () {
 //header scroll change
 document.addEventListener("scroll", function () {
   if (window.scrollY > 1) {
-    headerTag.style.backgroundColor = "var(--ultra-light-beige)"
+    headerTag.style.backgroundColor = "var(--off-white)"
     hoverEnter ()
   }
   else {

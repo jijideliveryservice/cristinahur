@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./inquire.css">
     <link rel="icon" href="./assets/favicon.ico">
     <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <title>Cristina Hur Studio</title>
 </head>
 
@@ -37,7 +38,8 @@
         <a href="./index.html" class="logo">cristina hur</a>
 
         <nav class="rightLinks">
-            <a href="https://calendly.com/hi-cristinahur/30min" target="_blank" rel="noopener noreferrer">Book A Discovery Call</a>
+            <a href="#" onclick="Calendly.initPopupWidget({ url: 'https://calendly.com/hi-cristinahur/30min' }); return false;">
+            Book A Discovery Call</a>
         </nav>
 
 
@@ -316,6 +318,7 @@
     <!--footer end-->
 
     <script src="./inquire.js"></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
 
