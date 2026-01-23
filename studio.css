@@ -337,14 +337,45 @@ section {
     margin: 0;
   }
 
-  .studio {
+  .flower {
     display: inline-block;
     vertical-align: middle;
     border-radius: 4px;
     object-fit: cover;
-    height: 60px;
+    height: 1em;
     width: auto;
   }
+
+  .office {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    object-fit: cover;
+    height: 1em;
+    width: auto;
+  }
+
+  .candles {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    object-fit: cover;
+    height: 1em;
+    width: auto;
+  }
+
+  .ocean {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    object-fit: cover;
+    height: 1em;
+    width: auto;
+  }
+
+
+
+
 /*section one ends*/
 
 
