@@ -20,7 +20,7 @@
     --bold-weight: 700;
 
     --dark-green: #484C41;
-    --dark-gray: #2F1B12;
+    --dark-gray: #2C2824;
     --light-gray: #858585;
     --ultra-light-gray: #F0EEEA;
     --beige: #EDE9DE;
@@ -28,7 +28,7 @@
     --off-white: #fffffd;
     --vintage-yellow: #E4C527;
 
-    --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
+    --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
     --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
     --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
     --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);

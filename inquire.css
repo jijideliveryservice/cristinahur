@@ -20,8 +20,8 @@
   --semibold-weight: 600;
   --bold-weight: 700;
 
- --dark-green: #484C41;
-  --dark-gray: #2F1B12;
+  --dark-green: #484C41;
+  --dark-gray: #2C2824;
   --light-gray: #858585;
   --ultra-light-gray: #F0EEEA;
   --beige: #EDE9DE;
@@ -29,7 +29,7 @@
   --off-white: #fffffd;
   --vintage-yellow: #E4C527;
 
-  --header-logo: normal normal var(--medium-weight) var(--font-size-logo)/1.5 var(--font-primary);
+  --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
   --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
   --h1: normal normal var(--thin-weight) var(--font-size-xl)/1.5 var(--font-secondary);
   --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
@@ -202,7 +202,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url("./assets/brand moodcard.png");
+    background-image: url("./assets/businesscard.png");
 }
 
 /*right side*/
@@ -378,7 +378,7 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: white;
+    background-color: var(--off-white);
     padding: 32px;
   }
 
@@ -391,7 +391,7 @@
 
   .footer2 {
     text-align: right;
-    color: white;
+    color: var(--off-white);
     padding-right: 32px;
     padding-left: 32px;
   }
@@ -399,7 +399,7 @@
   .copyright {
     font-family: var(--font-secondary);
     font-size: 12px;
-    color: white;
+    color: var(--off-white);
     font-weight: var(--thin-weight);
   }
 
