@@ -336,6 +336,31 @@ section {
     padding: 32px;
   }
 
+  .footer1 nav a {
+    color: var(--dark-gray);
+    position: relative;
+  }
+
+  .footer1 nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: .8px;
+    background-color: var(--underline-color, currentColor);
+    transition: width 0.8s ease;
+  }
+
+  .footer1 nav a:hover::after {
+    width: 100%;
+  }
+
+  /* optional: if you ever add .active to footer links too */
+  .footer1 nav a.active::after {
+    width: 100%;
+  }
+
   .footer1 nav {
     display: flex;
     justify-content: space-between;
@@ -345,7 +370,6 @@ section {
 
   .footer2 {
     text-align: right;
-    color: var(--off-white);
     padding-right: 32px;
     padding-left: 32px;
   }
@@ -356,7 +380,6 @@ section {
     color: var(--off-white);
     font-weight: var(--thin-weight);
   }
-
 
 
 /* Mobile Starts */

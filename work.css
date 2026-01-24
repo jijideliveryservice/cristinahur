@@ -353,59 +353,63 @@ a.open-menu, .menuPanel, .close-button {
 /*work page end*/
 
 /*footer*/
-.footer {
-  width: 100%;
-  background-color: var(--dark-gray);
+  .footer {
+    width: 100%;
+    right: 0;
+    background-color: var(--dark-gray);
+  }
 
-}
+  .footer1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--off-white);
+    padding: 32px;
+  }
 
-.footer1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  background-color: var(--off-white);
-  padding: 32px;
-}
+  .footer1 nav a {
+    color: var(--dark-gray);
+    position: relative;
+  }
 
-.footer1 nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-}
+  .footer1 nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: .8px;
+    background-color: var(--underline-color, currentColor);
+    transition: width 0.8s ease;
+  }
+
+  .footer1 nav a:hover::after {
+    width: 100%;
+  }
+
+  /* optional: if you ever add .active to footer links too */
+  .footer1 nav a.active::after {
+    width: 100%;
+  }
+
+  .footer1 nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
 
 
+  .footer2 {
+    text-align: right;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
 
-.footer2 {
-  text-align: right;
-  color: var(--off-white);
-  padding-right: 32px;
-  padding-left: 32px;
-}
-
-.copyright {
+  .copyright {
     font-family: var(--font-secondary);
     font-size: 12px;
     color: var(--off-white);
     font-weight: var(--thin-weight);
-}
-
-@media (max-width: 768px) {
-  .footer1 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
   }
 
-  .footer1 nav{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
-  }
-
-  .footer2 {
-    text-align: center;
-  }
-}

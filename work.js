@@ -24,8 +24,6 @@ openMenuTag.addEventListener("click", function () {
 
 })
 
-//current page hilight
-
 /// Debug - see what we're working with
 console.log('Current URL:', window.location.href);
 console.log('Current pathname:', window.location.pathname);
@@ -36,7 +34,7 @@ const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 console.log('Looking for:', currentPath);
 
 // Desktop nav
-document.querySelectorAll("header nav a").forEach(link => {
+document.querySelectorAll("header nav a, .footer1 nav a").forEach(link => {
     const linkHref = link.getAttribute('href');
     console.log('Link href:', linkHref);
     
