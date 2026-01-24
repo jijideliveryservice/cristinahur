@@ -156,3 +156,22 @@ form.addEventListener("submit", async (e) => {
 });
 
 
+//tooltip copy
+document.querySelectorAll(".copy-target").forEach(el => {
+  el.addEventListener("click", async () => {
+    const text = el.dataset.copy;
+    const wrap = el.closest(".copy-wrap");
+
+    try {
+      await navigator.clipboard.writeText(text);
+
+      wrap.classList.add("show-tooltip");
+
+      setTimeout(() => {
+        wrap.classList.remove("show-tooltip");
+      }, 1200);
+    } catch (err) {
+      console.error("Clipboard copy failed", err);
+    }
+  });
+});

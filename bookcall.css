@@ -275,6 +275,38 @@ section {
     font-weight: var(--thin-weight);
   }
 
+  .copy-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .copy-target {
+    cursor: pointer;
+    font: var(--header-a);
+  }
+
+  .copy-tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    font: var(--header-a);
+    letter-spacing: 0.04em;
+    color: var(--off-white);
+    background: var(--dark-gray);
+    padding: 8px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .copy-wrap.show-tooltip .copy-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
 
 
 /* Mobile Starts */
