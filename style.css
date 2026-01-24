@@ -291,11 +291,12 @@ section {
   }
 
   .secondProject .leftImage {
-    background-image: url("assets/bi_phone_mockup1.jpg");
+    background-image: url("assets/dwt side 1.png");
   }
 
   .secondProject .rightImage {
-    background-image: url("assets/bi_phone_mockup1.jpg");
+    background-image: url("assets/dwt side 2.png");
+    background-position: 50% 80%;
   }
 
   .thirdProject {

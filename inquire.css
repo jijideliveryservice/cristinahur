@@ -300,8 +300,6 @@
   .medium {
     padding: 24px 32px 24x 32px;
   }
-  
-
 /* button end*/
 
   .buttons {
@@ -410,6 +408,14 @@
       color: var(--dark-gray);
       outline: none;
     }
+
+  /*text area*/
+  textarea {
+    font: var(--p);
+    color: var(--dark-gray);
+    border: 1px solid var(--dark-gray);
+    background-color: transparent;
+  }
    
     
 
