@@ -575,6 +575,7 @@ section {
   }
 
   .letswork {
+    margin-top: 0;
     margin-bottom: -30px;
     font-size: clamp(24px, 10vw, 100px);
     z-index: 100;
