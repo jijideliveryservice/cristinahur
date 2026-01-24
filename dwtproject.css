@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://use.typekit.net/ofo5hjd.css");
+
+:root {
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: "larken", sans-serif;
+
+    --font-size-xs: 14px;
+    --font-size-s: 16px;
+    --font-size-logo: 20px;
+    --font-size-m: 24px;
+    --font-size-l: 32px;
+
+    --thin-weight: 100;
+    --extralight-weight: 200;
+    --light-weight: 300;
+    --regular-weight: 400;
+    --medium-weight: 500;
+    --semibold-weight: 600;
+    --bold-weight: 700;
+
+    --dark-green: #484C41;
+    --dark-gray: #2C2824;
+    --light-gray: #858585;
+    --ultra-light-gray: #F0EEEA;
+    --beige: #EDE9DE;
+    --ultra-light-beige: #F9F6ED;
+    --off-white: #fffffd;
+    --vintage-yellow: #E4C527;
+
+    --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
+    --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
+    --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
+    --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
+    --p: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-primary);
+}
+
+
+/*font start*/
+h2 {
+    font: var(--h2);
+}
+
+h3 {
+    font: var(--h3);
+    color: var(--dark-gray);
+}
+
+.logo {
+    font: var(--header-logo);
+    text-decoration: none;
+    color: var(--dark-gray);
+}
+
+p {
+    font: var(--p);
+    color: var(--dark-gray);
+}
+
+nav a {
+  font: var(--header-a);
+  color: var(--dark-gray);
+  text-decoration: none;
+  padding: 8px 0px 8px 0px;
+  border-bottom: 1px solid transparent;
+  
+}
+
+
+/*font end*/
+
+
+
+
+/*body start*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--dark-gray);
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin:0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--off-white);
+  background-image: url("./assets/paper_grain_texture.png");
+  scroll-snap-type: y proximity; /* Subtle snapping */
+}
+
+main {
+    flex: 1;
+    min-height: calc(100vh - 100px); 
+    position: relative; 
+}
+/*body end*/
+
+
+
+
+
+/*header start*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 32px;
+}
+
+header .leftLinks, header .rightLinks {
+  flex: 1;
+}
+
+header .rightLinks {
+  text-align: right;
+}
+
+header .leftLinks {
+  text-align: left;
+}
+
+header .logo {
+  text-align: center;
+}
+
+header .leftLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+header nav a {
+    position: relative;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: .8px;
+    background-color: var(--light-gray);
+    transition: width 0.8s ease; /* Animate the width */
+}
+
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+header nav a.active {
+    color: var(--light-gray);
+}
+
+header nav a.active::after {
+    width: 100%;
+    background-color: var(--light-gray);
+}
+
+header nav a:hover {
+    color: var(--light-gray);
+}
+
+header nav a.active {
+    color: var(--light-gray);
+}
+/*header end*/
+
+
+
+/*mobile menu*/
+a.open-menu, .menuPanel, .close-button {
+  display: none; /*hide mobile stuff on desktop*/
+}
+
+@media (max-width: 768px) {
+  /* turn off desktop navigation */
+  header .leftLinks,
+  header .rightLinks {
+    display: none;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+}
+
+  /* turn on menu */
+  a.open-menu {
+    display: block;
+    font: var(--header-a);
+    color: var(--dark-gray);
+    text-decoration: none;
+  }
+
+  .menuPanel {
+    position: fixed;
+    top: 0;
+    right: -800px;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+
+    background-color: var(--dark-gray);
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 32px;
+    
+    padding: 32px;
+    box-sizing: border-box;
+    
+    transition: right .3s ease;
+  }
+
+ .menuPanel.open {
+    right: 0;
+ }
+
+ .menuPanel a  {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-s);
+    gap: 32px;
+
+    color: var(--off-white);
+    text-align: center;
+    text-decoration: none;
+  }
+
+ .close-button {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    width: 1em;
+    right: 32px;
+    cursor: pointer;
+ }
+
+ .menuPanel-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    flex: 1;
+ }
+
+ .menuPanel button {
+    padding: 40px 24px 40px 24px;
+    width: 100%;
+    margin: 0 32px;
+    border: none;
+ }
+
+ .menuPanel button a{
+    font: var(--header-a);
+    color: var(--dark-gray);
+ }
+
+}
+/*mobile menu end*/
+
+/*work page start*/
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    width:100%;
+    overflow-x: hidden;
+    padding: 40px 32px 180px 32px;
+    box-sizing: border-box;
+}
+
+.gallery img {
+    flex: 0 0 33%; 
+    max-width: 33%;
+    aspect-ratio: 4/5;
+    height: auto;
+    padding-bottom: 8px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+/*work page end*/
+
+/*footer*/
+  .footer {
+    width: 100%;
+    right: 0;
+    background-color: var(--dark-gray);
+  }
+
+  .footer1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--off-white);
+    padding: 32px;
+  }
+
+  .footer1 nav a {
+    color: var(--dark-gray);
+    position: relative;
+  }
+
+  .footer1 nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: .8px;
+    background-color: var(--underline-color, currentColor);
+    transition: width 0.8s ease;
+  }
+
+  .footer1 nav a:hover::after {
+    width: 100%;
+  }
+
+  .footer1 nav a.active::after {
+    width: 100%;
+  }
+
+  .footer1 nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+
+  .footer2 {
+    text-align: right;
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .copyright {
+    font-family: var(--font-secondary);
+    font-size: 12px;
+    color: var(--off-white);
+    font-weight: var(--thin-weight);
+  }
+
