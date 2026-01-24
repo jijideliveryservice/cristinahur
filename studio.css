@@ -8,16 +8,23 @@
   font-style: italic;
 }
 
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 :root {
   --font-primary: 'Poppins', sans-serif;
   --font-secondary: "larken", sans-serif;
 
-  --font-size-xs: 14px;
-  --font-size-s: 16px;
-  --font-size-logo: 20px;
-  --font-size-m: 24px;
-  --font-size-l: 32px;
-  --font-size-xl: 40px;
+  --size-xs: 14px;
+  --size-s: 16px;
+  --size-logo: 20px;
+  --size-m: 24px;
+  --size-l: 32px;
+  --size-xl: 40px;
+  --size-extral: 64px;
+
 
   --thin-weight: 100;
   --extralight-weight: 200;
@@ -36,13 +43,13 @@
   --off-white: #fffffd;
   --vintage-yellow: #E4C527;
 
-  --header-logo: normal normal var(--light-weight) var(--font-size-logo)/1.5 var(--font-secondary);
-  --header-a: normal normal var(--thin-weight) var(--font-size-xs)/1 var(--font-secondary);
-  --h1: normal normal var(--thin-weight) var(--font-size-xl)/1 var(--font-secondary);
-  --h2: normal normal var(--thin-weight) var(--font-size-l)/1.5 var(--font-secondary);
-  --h3: normal normal var(--thin-weight) var(--font-size-m)/1.5 var(--font-secondary);
-  --h4: normal normal var(--light-weight) var(--font-size-s)/1.5 var(--font-secondary);
-  --p: normal normal var(--light-weight) var(--font-size-xs)/1.5 var(--font-primary);
+  --header-logo: normal normal var(--light-weight) var(--size-logo)/1.5 var(--font-secondary);
+  --header-a: normal normal var(--thin-weight) var(--size-xs)/1 var(--font-secondary);
+  --h1: normal normal var(--thin-weight) var(--size-xl)/1 var(--font-secondary);
+  --h2: normal normal var(--thin-weight) var(--size-l)/1.5 var(--font-secondary);
+  --h3: normal normal var(--thin-weight) var(--size-m)/1.5 var(--font-secondary);
+  --h4: normal normal var(--light-weight) var(--size-s)/1.5 var(--font-secondary);
+  --p: normal normal var(--light-weight) var(--size-xs)/1.5 var(--font-primary);
 
   --grid-step: 24px;
 }
@@ -89,16 +96,71 @@
 /* button start*/
   button {
     font: var(--header-a);
-    padding: 40px 64px 40px 64px;
     border: none;
     text-align: center;
     width: fit-content;
+    cursor: pointer;
+    position: relative;
   }
 
-  .resume {
-    color: white;
+  button.processing {
+    cursor: none;
+  }
+
+  .spinner {
+    display: none;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid white;
+    border-top-color: var(--dark-gray);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  /*processing*/
+  button.processing .buttonText {
+    visibility: hidden;
+  }
+
+  button.processing .spinner {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .primary {
+    color: var(--off-white);
     background-color: var(--dark-gray);
   }
+
+  .secondary {
+    color: var(--dark-gray);
+    background-color: var(--off-white);
+  }
+
+  .ghostPrimary {
+    border: 1px solid var(--dark-gray);
+    background-color: transparent;
+    color: var(--dark-gray);
+  }
+
+  .ghostSecondary {
+    border: 1px solid var(--off-white);
+    background-color: transparent;
+    color: var(--off-white);
+  }
+
+  .small {
+    padding: 16px 24px 16px 24px;
+  }
+
+  .medium {
+    padding: 24px 32px 24x 32px;
+  }
+  
+
 /* button end*/
 
 
@@ -394,9 +456,9 @@ section {
     grid-template-columns: 1fr 1fr;
     width: 100%;
     min-height: 100vh;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background-color: var(--ultra-light-gray);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: var(--off-white);
  }
 
   .vibe {
@@ -496,37 +558,39 @@ section {
 
   .connection {
     margin-left: -30px;
-    border: 1px solid var(--vintage-yellow);
+    border: 1px solid var(--off-white);
     border-radius: 100%;
     padding: 8px 16px 8px 16px;
+    color: var(--off-white);
   }
   
   .creation {
     margin-right: -30px;
     text-align: left;
+    color: var(--off-white);
   }
 
   p.slang {
     font-family: "customslang";
-    color: var(--vintage-yellow);
   }
 
   .letswork {
     margin-bottom: -30px;
     font-size: clamp(24px, 10vw, 100px);
     z-index: 100;
+    color: var(--off-white);
   }
 
   .together {
     margin-top: -50px;
     margin-bottom: 10px;
     font-size: clamp(24px, 10vw, 80px);
-
+    color: var(--off-white);
   }
 
   .content .resume {
     font: var(--header-a);
-    color: white;
+    color: color: var(--off-white);
     padding: 40px 64px 40px 64px;
     border: none;
     background-color: var(--dark-gray);

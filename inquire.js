@@ -79,6 +79,21 @@ form.addEventListener("submit", async (e) => {
   // validate final step before sending
   if (!validateStep(3)) return;
 
+   // ✅ PROCESSING START (only affects the submit button)
+    const submitBtn = form.querySelector('button[type="submit"].small.primary');
+    
+    const stopProcessing = () => {
+      if (!submitBtn) return;
+      submitBtn.classList.remove("processing");
+      submitBtn.disabled = false;
+    };
+
+    if (submitBtn) {
+      submitBtn.classList.add("processing");
+      submitBtn.disabled = true;
+    }
+    // ✅ PROCESSING END
+
   const formData = new FormData(form);
 
   try {
@@ -107,3 +122,5 @@ form.addEventListener("submit", async (e) => {
     alert("Network error. Please try again.");
   }
 });
+
+

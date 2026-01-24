@@ -278,5 +278,3 @@ document.addEventListener("touchmove", (e) => {
   }
 );
 
-
-

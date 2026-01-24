@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url("https://use.typekit.net/ofo5hjd.css");
 
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 :root {
   --font-primary: 'Poppins', sans-serif;
   --font-secondary: "larken", sans-serif;
@@ -228,14 +233,76 @@
   }
 
 
+
 /* button start*/
   button {
-    font: var(--p);
-    padding: 40px 64px 40px 64px;
+    font: var(--header-a);
     border: none;
     text-align: center;
     width: fit-content;
+    cursor: pointer;
+    position: relative;
   }
+
+  button.processing {
+    cursor: none;
+  }
+
+  .spinner {
+    display: none;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid white;
+    border-top-color: var(--dark-gray);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  /*processing*/
+  button.processing .buttonText {
+    visibility: hidden;
+  }
+
+  button.processing .spinner {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .primary {
+    color: var(--off-white);
+    background-color: var(--dark-gray);
+  }
+
+  .secondary {
+    color: var(--dark-gray);
+    background-color: var(--off-white);
+  }
+
+  .ghostPrimary {
+    border: 1px solid var(--dark-gray);
+    background-color: transparent;
+    color: var(--dark-gray);
+  }
+
+  .ghostSecondary {
+    border: 1px solid var(--off-white);
+    background-color: transparent;
+    color: var(--off-white);
+  }
+
+  .small {
+    padding: 16px 24px 16px 24px;
+  }
+
+  .medium {
+    padding: 24px 32px 24x 32px;
+  }
+  
+
+/* button end*/
 
   .buttons {
     display: flex;
@@ -243,28 +310,6 @@
     justify-content: space-between;
     gap: 40px;
   }
-
-  .nextBtn {
-    padding: 24px 40px 24px 40px;
-    border: none;  
-    background-color: var(--dark-gray);
-    color: white;
-  }
-
-  .btnGhost {
-    padding: 24px 40px 24px 40px;
-    border: 1px solid var(--dark-gray);
-    background-color: transparent;
-    color: var(--dark-gray);
-  }
-
-  .submitBtn {
-    padding: 24px 40px 24px 40px;
-    border: none; 
-    background-color: var(--dark-gray);
-    color: white;
-  }
-/* button end*/
 
 /*intro section start*/
   .contact-info {
