@@ -526,7 +526,7 @@ section {
     width: 90%;
     height: 70%;
     border-radius: 80px;
-    background-image: url("./assets/DSCF1442.png");
+    background-image: url("./assets/DSCF1442.jpg");
     background-attachment: fixed;
     will-change: width, height, border-radius;
   }
