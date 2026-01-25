@@ -357,7 +357,7 @@ section {
 
 
 .hero-section {
-  background-image: url("./assets/hero-image.JPG");
+  background-image: url("./assets/hero-image.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
