@@ -592,7 +592,7 @@ section {
 
   .content .resume {
     font: var(--header-a);
-    color: color: var(--off-white);
+    color: var(--off-white);
     padding: 40px 64px 40px 64px;
     border: none;
     background-color: var(--dark-gray);
