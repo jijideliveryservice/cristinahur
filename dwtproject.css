@@ -198,6 +198,18 @@ header nav a.active {
     object-position: center;
     display: block; 
 }
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 24px 16px 120px 16px; /* optional: nicer spacing on phone */
+    gap: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .gallery { grid-template-columns: 1fr; }
+}
 /*work page end*/
 
 
