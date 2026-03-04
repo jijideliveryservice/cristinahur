@@ -179,9 +179,10 @@ header nav a.active {
 /*work page start*/
 .gallery {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
+    justify-content: initial; /* or remove */
+
     width:100%;
     overflow-x: hidden;
     padding: 40px 32px 180px 32px;
@@ -191,10 +192,11 @@ header nav a.active {
 .gallery img {
     max-width: 100%;
     aspect-ratio: 4/5;
-    height: 100%;
+    height: auto;
     padding-bottom: 8px;
     object-fit: cover;
     object-position: center;
+    display: block; 
 }
 /*work page end*/
 
