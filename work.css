@@ -277,13 +277,10 @@ a.open-menu, .menuPanel, .close-button {
 
 /*work page start*/
 .work-gallery {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-
-    width:100%;
-    overflow-x: hidden;
+    width: 100%;
     padding: 80px 32px 180px 32px;
     box-sizing: border-box;
 }
@@ -292,7 +289,7 @@ a.open-menu, .menuPanel, .close-button {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    flex: 0 0 calc(25% - 24px);
+    min-width: 0;
 }
 
 .frame {
@@ -351,9 +348,10 @@ a.open-menu, .menuPanel, .close-button {
 
 
 @media (max-width: 1024px) {
-    .work-gallery {
-        flex-wrap: wrap;
+   .work-gallery {
+        grid-template-columns: repeat(2, 1fr);
     }
+
     .work-card {
         flex: 0 0 calc(50% - 16px); 
     }
@@ -363,6 +361,12 @@ a.open-menu, .menuPanel, .close-button {
       text-wrap: nowrap;
     }
 }
+
+@media (max-width: 640px) {
+    .work-gallery {
+        grid-template-columns: 1fr;
+    }
+  }
 
 
 
