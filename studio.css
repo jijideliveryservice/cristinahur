@@ -458,7 +458,7 @@ section {
     width: 100%;
     min-height: 100vh;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 70px;
     background-color: var(--off-white);
  }
 
@@ -491,7 +491,7 @@ section {
 
   .ineprofile {
     width: 50%;
-    padding-top: 56px;
+    padding-top: 40px
   }
 
 /*section 2 ends*/

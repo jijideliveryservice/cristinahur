@@ -338,6 +338,16 @@ a.open-menu, .menuPanel, .close-button {
     font-size: var(--font-size-xs);
 }
 
+.under-construction {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  font-family: var(--font-secondary);
+  font-weight: var(--thin-weight);
+  font-size: var(--font-size-xs);
+
+}
 
 
 @media (max-width: 1024px) {
@@ -346,6 +356,11 @@ a.open-menu, .menuPanel, .close-button {
     }
     .work-card {
         flex: 0 0 calc(50% - 16px); 
+    }
+
+    .under-construction {
+      font-size: 12px;
+      text-wrap: nowrap;
     }
 }
 
