@@ -291,11 +291,11 @@ section {
   }
 
   .secondProject .leftImage {
-    background-image: url("assets/dwt_home_side1.jpg");
+    background-image: url("assets/dwt_home_sideone.jpg");
   }
 
   .secondProject .rightImage {
-    background-image: url("assets/dwt-sideright.jpg");
+    background-image: url("assets/dwt_home_side2.jpg");
   }
 
   .thirdProject {
