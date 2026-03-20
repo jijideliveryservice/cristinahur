@@ -343,7 +343,7 @@ a.open-menu, .menuPanel, .close-button {
   font-family: var(--font-secondary);
   font-weight: var(--thin-weight);
   font-size: var(--font-size-xs);
-
+  color: var(--off-white);
 }
 
 
